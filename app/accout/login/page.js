@@ -1,9 +1,26 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import CommonInput from "@/component/formComponent/CommonInput";
 import registeImag from "../../../public/Images/accountImage/login.png";
 import Image from "next/image";
 import Link from "next/link";
 const Login = () => {
+  const [inputValues, setInputValues] = useState({
+    email: "",
+    password: "",
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setInputValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("inputValue", inputValues);
+    setInputValues("");
+  };
   return (
     <div
       className="flex justify-center items-center px-10 py-10 bg-gray-100 "
@@ -63,39 +80,50 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="mt-5">
-            <CommonInput
-              sideText={"Email"}
-              className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              placeholder="Email"
-              type="email"
-            />
-          </div>
-          <div className="mt-5">
-            <CommonInput
-              sideText={"Password"}
-              className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              type="password"
-              placeholder="password"
-            />
-          </div>
-          <div className="flex justify-center pb-3 mt-3">
-            <button class="mt-2 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-1/2 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-              <svg
-                class="w-6 h-6 -ml-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                <circle cx="8.5" cy="7" r="4" />
-                <path d="M20 8v6M23 11h-6" />
-              </svg>
-              <span class="ml-3">login </span>
-            </button>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mt-5">
+              <CommonInput
+                sideText={"Email"}
+                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                placeholder="Email"
+                type="email"
+                name="email"
+                onChange={handleInputChange}
+                value={inputValues.email}
+                required
+              />
+            </div>
+            <div className="mt-5">
+              <CommonInput
+                sideText={"Password"}
+                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                type="password"
+                placeholder="password"
+                name="password"
+                onChange={handleInputChange}
+                value={inputValues.password}
+                required
+              />
+            </div>
+
+            <div className="flex justify-center pb-3">
+              <div class="mt-2 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-1/2 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                <svg
+                  class="w-6 h-6 -ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <path d="M20 8v6M23 11h-6" />
+                </svg>
+                <input className="ml-3" type="submit" value="Login" />
+              </div>
+            </div>
+          </form>
           <div className="pb-5">
             Create new Account
             <span>

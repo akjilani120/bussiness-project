@@ -6,7 +6,7 @@ import registeImag from "../../../public/Images/accountImage/registation.png";
 import Image from "next/image";
 import Link from "next/link";
 const Register = () => {
-  // const [likes, setLikes] = React.useState(0);
+  const [message, setMessage] = useState("");
   const [inputValues, setInputValues] = useState({
     fullName: "",
     email: "",
@@ -20,12 +20,17 @@ const Register = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = () => {
-    if (inputValues.acceptTemp == "on") {
-      console.log("inputValue", inputValues);
-      setInputValues("");
-    } else {
-      console.log("Please accepte all terms");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,13})/;
+    if (inputValues.password == "") {
+      setMessage("Plase give password");
+    } else if (regex.test(inputValues.password)) {
+      setMessage("Password is Valid");
+    } else if (!regex.test(inputValues.password)) {
+      setMessage(
+        "Your password would at least one charactar small letter,Capital letter,numbers and password length will at least 8 "
+      );
     }
   };
 
@@ -84,70 +89,74 @@ const Register = () => {
               Or sign up with e-mail
             </div>
           </div>
-          <div className="mt-5">
-            <CommonInput
-              className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              placeholder="Full Name"
-              name="fullName"
-              sideText={"Full Name"}
-              onChange={handleInputChange}
-              value={inputValues.fullName}
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mt-5">
+              <CommonInput
+                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                placeholder="Full Name"
+                name="fullName"
+                sideText={"Full Name"}
+                onChange={handleInputChange}
+                value={inputValues.fullName}
+                required
+              />
+            </div>
 
-          <div className="mt-5">
-            <CommonInput
-              sideText={"Email"}
-              className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              placeholder="Email"
-              type="email"
-              name="email"
-              onChange={handleInputChange}
-              value={inputValues.email}
-            />
-          </div>
-          <div className="mt-5">
-            <CommonInput
-              sideText={"Password"}
-              className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-              type="password"
-              placeholder="password"
-              name="password"
-              onChange={handleInputChange}
-              value={inputValues.password}
-            />
-          </div>
-          <div class="input_field checkbox_option my-4">
-            <input
-              name="acceptTemp"
-              onChange={handleInputChange}
-              type="checkbox"
-              id="cb1"
-            />
-            <label className="face ml-2" for="cb1">
-              I agree with terms and conditions
-            </label>
-          </div>
-          <div className="flex justify-center pb-3">
-            <button
-              onClick={handleSubmit}
-              class="mt-2 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-1/2 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-            >
-              <svg
-                class="w-6 h-6 -ml-2"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                <circle cx="8.5" cy="7" r="4" />
-                <path d="M20 8v6M23 11h-6" />
-              </svg>
-              <span class="ml-3">Sign Up</span>
-            </button>
-          </div>
+            <div className="mt-5">
+              <CommonInput
+                sideText={"Email"}
+                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                placeholder="Email"
+                type="email"
+                name="email"
+                onChange={handleInputChange}
+                value={inputValues.email}
+                required
+              />
+            </div>
+            <div className="mt-5">
+              <CommonInput
+                sideText={"Password"}
+                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                type="password"
+                placeholder="password"
+                name="password"
+                onChange={handleInputChange}
+                value={inputValues.password}
+                required
+              />
+              <p className="text-red-500">{message}</p>
+            </div>
+            <div class="input_field checkbox_option my-4">
+              <input
+                name="acceptTemp"
+                onClick={handleInputChange}
+                type="checkbox"
+                id="cb1"
+                required
+              />
+              <label className="face ml-2" for="cb1">
+                I agree with terms and conditions
+              </label>
+            </div>
+            <div className="flex justify-center pb-3">
+              <div class="mt-2 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-1/2 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                <svg
+                  class="w-6 h-6 -ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <path d="M20 8v6M23 11h-6" />
+                </svg>
+                <input className="ml-3" type="submit" value="Sign Up" />
+              </div>
+            </div>
+          </form>
           <div className="pb-5">
             If you have already account?
             <span>
