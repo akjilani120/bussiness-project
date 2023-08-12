@@ -33,15 +33,25 @@ const Register = () => {
       );
     }
   };
-
+  const twentySizeStyle = {
+    marginTop: "20px",
+  };
+  const twevlSizeStyle = {
+    padding: "12px  8px",
+  };
   return (
     <div className="flex justify-center items-center px-10 py-5 bg-gray-100">
       <div className="write w-2/5 px-4 flex justify-center bg-white">
         <div className="sign w-full">
-          <h1 className=" text-center my-4 text-xl">Sign Up</h1>
+          <h1 className=" text-center  text-xl" style={{ margin: "16px 0px" }}>
+            Sign Up
+          </h1>
           <div>
             <div className="flex justify-center">
-              <button class="w-full h-8 max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+              <button
+                style={twevlSizeStyle}
+                class="w-full h-8 max-w-xs font-bold shadow-sm rounded-lg  bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+              >
                 <div class="bg-white p-1 rounded-full">
                   <svg class="w-4  " viewBox="0 0 533.5 544.3">
                     <path
@@ -67,7 +77,10 @@ const Register = () => {
             </div>
             <div>
               <div className="flex justify-center">
-                <button class="w-full h-8 max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
+                <button
+                  style={twentySizeStyle}
+                  class="w-full h-8 max-w-xs font-bold shadow-sm rounded-lg  bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline "
+                >
                   <div class="bg-white p-1 rounded-full">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -84,29 +97,31 @@ const Register = () => {
               </div>
             </div>
           </div>
-          <div class=" border-b text-center my-5">
+          <div class=" border-b text-center ">
             <div class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
               Or sign up with e-mail
             </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="mt-5">
+            <div className="" style={twentySizeStyle}>
               <CommonInput
-                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                className="w-full px-8  rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                 placeholder="Full Name"
                 name="fullName"
                 sideText={"Full Name"}
+                style={twevlSizeStyle}
                 onChange={handleInputChange}
                 value={inputValues.fullName}
                 required
               />
             </div>
 
-            <div className="mt-5">
+            <div style={twentySizeStyle}>
               <CommonInput
                 sideText={"Email"}
-                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                className="w-full px-8 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                 placeholder="Email"
+                style={twevlSizeStyle}
                 type="email"
                 name="email"
                 onChange={handleInputChange}
@@ -114,12 +129,13 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="mt-5">
+            <div style={twentySizeStyle}>
               <CommonInput
                 sideText={"Password"}
-                className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                className="w-full px-8  rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                 type="password"
                 placeholder="password"
+                style={twevlSizeStyle}
                 name="password"
                 onChange={handleInputChange}
                 value={inputValues.password}
@@ -139,7 +155,10 @@ const Register = () => {
                 I agree with terms and conditions
               </label>
             </div>
-            <div className="flex justify-center pb-3">
+            <div
+              className="flex justify-center"
+              style={{ paddingBottom: "12px" }}
+            >
               <div class="mt-2 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-1/2 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                 <svg
                   class="w-6 h-6 -ml-2"
@@ -157,7 +176,7 @@ const Register = () => {
               </div>
             </div>
           </form>
-          <div className="pb-5">
+          <div className="" style={{ paddingBottom: "20px" }}>
             If you have already account?
             <span>
               <Link

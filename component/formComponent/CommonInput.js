@@ -23,7 +23,7 @@ const CommonInput = ({
 }) => {
   return (
     <div className={bodyClass}>
-      <p className="p-0 mt-2">
+      <p className="p-0 " style={{ marginTop: "8px" }}>
         {sideText && <label htmlFor="">{sideText}</label>}
       </p>
       <input

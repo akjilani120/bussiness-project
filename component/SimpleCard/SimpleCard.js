@@ -1,39 +1,71 @@
-import React from "react";
+"use client";
+import StarRatingComponent from "react-star-rating-component";
+import { BsStarFill, BsFillHeartFill } from "react-icons/bs";
+import { BiShoppingBag } from "react-icons/bi";
+import { GrView } from "react-icons/gr";
+import Image from "next/image";
+import firstImage from "../../public/case-1.jpeg";
+import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
+import { useState } from "react";
 const SimpleCard = () => {
+  const [addColor, setAddColor] = useState(false);
+  const handleColor = () => {
+    setAddColor(!addColor);
+  };
   return (
     <div className="card">
       <div className="card-img-body">
         <div className="">
-          <img
-            className="w-full card-img"
-            src="https://m2.portotheme.com/media/catalog/product/cache/11458dcde882ed1dfb2833d935bf9253/p/r/product-14-grey_2.jpeg"
-            alt=""
+          <Image
+            src={firstImage}
+            alt="Picture of the author"
+            width={"100%"}
+            height={280}
           />
         </div>
         <div className="card-second-image">
-          <img
-            className="w-full card-img card-img2"
-            src="https://m2.portotheme.com/media/catalog/product/cache/11458dcde882ed1dfb2833d935bf9253/p/r/product-99-2-grey.jpeg"
-            alt=""
+          <Image
+            src={secondImage}
+            className="card-img2"
+            alt="Picture of the author"
+            width={"100%"}
+            height={280}
           />
         </div>
         <div className="card-icons z-40">
-          <span className="card-icon"> icon</span>
-          <span className="card-icon"> icon 2</span>
+          <BiShoppingBag className="inline  card-icon" />
+
+          <GrView className=" inline    card-icon" />
         </div>
         <div className="card-offer">
           <span className="text-sm">-41%</span>
         </div>
       </div>
 
-      <div>
+      <div className="flex justify-between mt-1 ">
+        <div className="">
+          <p className=" opacity-40">Women Red bag</p>
+
+          <StarRatingComponent
+            name="rate2"
+            editing={false}
+            renderStarIcon={() => <BsStarFill />}
+            starCount={5}
+            value={3}
+          />
+
+          <p className="opacity-40">$250</p>
+        </div>
         <div>
-          <p>Women Red bag</p>
-          <p>
-            <span>Star</span>
-          </p>
-          <p>$250</p>
+          <BsFillHeartFill
+            onClick={handleColor}
+            className={
+              addColor
+                ? "text-2xl text-red-600"
+                : "text-2xl text-gray-300  bg-transparent"
+            }
+          />
         </div>
       </div>
     </div>

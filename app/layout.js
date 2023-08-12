@@ -3,7 +3,6 @@ import HeadNavbar from "./common/HeadNavbar";
 import "./globals.css";
 import "react-slideshow-image/dist/styles.css";
 import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

@@ -2,8 +2,8 @@ import React from "react";
 
 const BannerCard = ({ cardTitle, aboutDiscri, desCPersentage }) => {
   return (
-    <div>
-      <div class="card-hover">
+    <div className="mt-0">
+      <div class="card-hover ">
         <div class="card-hover__content">
           <h3 class="card-hover__title">
             {cardTitle ? (

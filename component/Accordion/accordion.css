@@ -1,0 +1,13 @@
+.accordion-container{
+    position: relative;
+    transition: 2s;
+}
+.accordion-body{
+    margin-left: 15px;       
+    display: none;
+    transition: 2s;
+}
+.accordion-body-show{       
+    display: block;
+    transition: 2s;
+}
