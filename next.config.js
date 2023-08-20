@@ -6,7 +6,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.example.com",
+        hostname: "/images.unsplash.com/",
         port: "",
         pathname: "/account123/**",
       },
