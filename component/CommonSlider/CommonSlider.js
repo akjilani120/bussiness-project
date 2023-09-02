@@ -1,45 +1,24 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import SimpleButton from "../Extra-method/SimpleButton";
-const CommonSlider = ({ imageStyle, titleStyle }) => {
-  const slidesItems = [
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-      showMoreBtn: "View Sale",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-      showMoreBtn: "View Sale",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-      showMoreBtn: "View Sale",
-    },
-  ];
+const CommonSlider = ({
+  imageStyle,
+  titleStyle,
+  slidesItems,
+  slideDuration,
+  sliderBodyStyle,
+  indicatorClassName,
+}) => {
   const indicators = (index) => <div className="indicator"></div>;
   return (
-    <div className="slide-container">
-      <Slide arrows={false} indicators={indicators} duration={2000}>
+    <div style={sliderBodyStyle}>
+      <Slide
+        arrows={false}
+        indicators={indicators}
+        duration={slideDuration ? slideDuration : 2000}
+      >
         {slidesItems?.map((slidesItem, index) => (
-          <div key={index}>
+          <React.Fragment key={index}>
             <div className="flex justify-center items-center py-4">
               {slidesItem?.image ? (
                 <div>
@@ -52,8 +31,12 @@ const CommonSlider = ({ imageStyle, titleStyle }) => {
               ) : null}
               {slidesItem?.headName && slidesItem?.headtitle ? (
                 <div>
-                  <h6 className="m-0 p-0">{slidesItem?.headName}</h6>
-                  <p className="m-0 p-0">{slidesItem?.headtitle}</p>
+                  <h6 className="m-0 p-0 font-semibold">
+                    {slidesItem?.headName}
+                  </h6>
+                  <p className="m-0 p-0 text-sm opacity-5">
+                    {slidesItem?.headtitle}
+                  </p>
                 </div>
               ) : null}
             </div>
@@ -72,7 +55,7 @@ const CommonSlider = ({ imageStyle, titleStyle }) => {
                 ) : null}
               </div>
             </div>
-          </div>
+          </React.Fragment>
         ))}
       </Slide>
     </div>

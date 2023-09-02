@@ -1,15 +1,12 @@
 import React from "react";
 import "../../app/moreStyleShit/smallCardStyle.css";
-const SmallCard = ({ icon, titleName, sortDescribe }) => {
+const NameplateCard = ({ icon, titleName, sortDescribe }) => {
   const Icon = icon;
   return (
-    <div className="back-light p-2">
+    <div className="back-light ">
       <div className="flex justify-around smarlCard-body items-center">
         <div className="small-left w-1/4">
-          <p className=" text-center">
-            {" "}
-            <Icon className="" style={{ fontSize: "40px" }} />
-          </p>
+          <Icon className="" style={{ fontSize: "40px" }} />
         </div>
         <div className="small-right w-3/4 ">
           {titleName ? (
@@ -28,4 +25,4 @@ const SmallCard = ({ icon, titleName, sortDescribe }) => {
   );
 };
 
-export default SmallCard;
+export default NameplateCard;

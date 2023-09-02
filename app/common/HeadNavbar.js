@@ -6,6 +6,7 @@ import { FiSearch } from "react-icons/fi";
 import { BiSolidUser, BiHeart } from "react-icons/bi";
 import { CiShoppingCart } from "react-icons/ci";
 import Link from "next/link";
+import "./navbarStyle.css";
 
 function NavBar() {
   const [click, setClick] = useState(false);

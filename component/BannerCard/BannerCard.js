@@ -1,4 +1,5 @@
 import React from "react";
+import "./bannerCardStyle.css";
 
 const BannerCard = ({ cardTitle, aboutDiscri, desCPersentage }) => {
   return (

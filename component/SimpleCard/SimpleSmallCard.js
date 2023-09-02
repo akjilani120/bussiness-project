@@ -8,7 +8,7 @@ import firstImage from "../../public/case-1.jpeg";
 import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
 import { useState } from "react";
-const SimpleCard = ({
+const SimpleSmallCard = ({
   images,
   offerPercentage,
   productName,
@@ -20,21 +20,16 @@ const SimpleCard = ({
   imageWidth,
   loveReact,
 }) => {
-  const [addColor, setAddColor] = useState(false);
-  const handleColor = () => {
-    setAddColor(!addColor);
-  };
   return (
-    <div className="card" style={cardStyle}>
-      <div className="card-img-body">
-        <div className="">
-          <Image
-            src={firstImage}
-            alt="Picture of the author"
-            width={imageWidth}
-            height={imageHight}
-          />
-        </div>
+    <div className="small-card" style={cardStyle}>
+      <div className="card-img-body" style={{ width: "60%" }}>
+        <Image
+          src={firstImage}
+          alt="Picture of the author"
+          width={imageWidth}
+          height={imageHight}
+        />
+
         <div className="card-second-image">
           <Image
             src={secondImage}
@@ -44,16 +39,9 @@ const SimpleCard = ({
             height={imageHight}
           />
         </div>
-        <div className="card-icons z-40">
-          <BiShoppingBag className="inline  card-icon" />
-          <GrView className=" inline    card-icon" />
-        </div>
-        <div className="card-offer">
-          <span className="text-sm">-41%</span>
-        </div>
       </div>
 
-      <div className="flex justify-between mt-1 ">
+      <div className="">
         <div className="">
           <p className=" opacity-40">Women Red bag</p>
 
@@ -67,19 +55,9 @@ const SimpleCard = ({
 
           <p className="opacity-40">$250</p>
         </div>
-        <div>
-          <BsFillHeartFill
-            onClick={handleColor}
-            className={
-              addColor
-                ? "text-2xl text-red-600"
-                : "text-2xl text-gray-300  bg-transparent"
-            }
-          />
-        </div>
       </div>
     </div>
   );
 };
 
-export default SimpleCard;
+export default SimpleSmallCard;
