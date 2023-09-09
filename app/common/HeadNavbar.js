@@ -33,7 +33,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                href=""
+                href="/about"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}

@@ -30,7 +30,6 @@ export default function Home() {
     display: "flex",
     alignItems: "center",
     margin: "20px 0px",
-    justifyContent: "center",
   };
   const [subcribEmail, setSubcribEmail] = useState("");
   const handleInputChange = (event) => {
@@ -132,235 +131,177 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="lg:flex lg:px-5 md:px-3 px-2 py-7">
-        <div className="lg:w-3/4 md:w-2/4 w-full  ">
-          <div className="lg:flex justify-around">
-            <div className=" w-4/5 lg:w-1/3 px-2 mt-2 lg:mt-0 mb-7">
-              <SimpleCard />
-            </div>
-            <div className=" w-4/5 lg:w-1/3  mt-2 lg:mt-0  mb-7">
-              <SimpleCard />
-            </div>
-            <div className=" lg:w-1/3 w-4/5  mt-2 lg:mt-0 mb-7">
-              <SimpleCard />
-            </div>
-          </div>
-          <div className="p pr-2 my-5">
-            <div
-              className="show-car-body"
-              style={{
-                backgroundImage: `url("https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80")`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                height: "350px",
-              }}
-            >
-              <div className="showCar-overflow flex justify-center items-center">
-                <div>
-                  <h1>Abdul Kader Jilani</h1>
-                </div>
+      <section className="container py-7">
+        <div className="row">
+          <div className="col-12 col-md-9 col-lg-9">
+            <div className="row">
+              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
+                <SimpleCard />
+              </div>
+              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
+                <SimpleCard />
+              </div>
+              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
+                <SimpleCard />
               </div>
             </div>
-          </div>
-          <div className="px-5">
-            <div className="md:flex justify-between">
-              <div className="lf lg:w-1/4 w-1/2">
-                <h2>Top Rated Products</h2>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-              </div>
-              <div className="lf lg:w-1/4 w-1/2">
-                <h2>Top Rated Products</h2>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-              </div>
-              <div className="lf lg:w-1/4 w-1/2">
-                <h2>Top Rated Products</h2>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-                <div>
-                  <SimpleSmallCard
-                    cardStyle={cardStyle}
-                    imageHight={100}
-                    imageWidth={100}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" lg:w-1/4 md:w-2/4 w-full pr-4">
-          <div className="border border-solid  border-blue-100 ">
-            <div className="text-center py-3 bg-slate-300">
-              <h4 className=" ">BROWSE CATEGORIES</h4>
-            </div>
-            <div className="px-3">
-              <CustomAccordion
-                accordionItems={accordionItems}
-                title={"My items"}
-              />
-              <CustomAccordion
-                accordionItems={accordionItems}
-                title={"My items"}
-              />
-              <CustomAccordion
-                accordionItems={accordionItems}
-                title={"My items"}
-              />
-              <CustomAccordion
-                accordionItems={accordionItems}
-                title={"My items"}
-              />
-              <CustomAccordion
-                accordionItems={accordionItems}
-                title={"My items"}
-              />
-            </div>
-          </div>
-          <div className="p-5 mt-6" style={{ border: "1px solid silver" }}>
-            <CommonSlider slidesItems={slidesItems} titleStyle={titleStyle} />
-          </div>
-          <div className="my-5">
-            <div className=" p-5 bg-slate-300 text-center">
-              <h3 className=" font-bold">SUBSCRIBE NEWSLETTER</h3>
-              <p className="my-5">
-                Get all the latest information on Events, Sales and Offers.
-              </p>
+            <div className="p pr-2 my-5">
               <div
-                className="flex items-center bg-white  px-4 "
+                className="show-car-body"
                 style={{
-                  borderRadius: "47px",
-                  overflow: "hidden",
-                  height: "45px",
+                  backgroundImage: `url("https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80")`,
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  height: "350px",
                 }}
               >
-                <div>
-                  <AiOutlineMail
-                    className="mt-1"
-                    style={{ fontSize: "30px" }}
-                  />
+                <div className="showCar-overflow flex justify-center items-center">
+                  <div>
+                    <h1>Abdul Kader Jilani</h1>
+                  </div>
                 </div>
-
-                <CommonInput
-                  type="email"
-                  style={{ border: "none", height: "24px", padding: "5px" }}
-                  placeholder="Email Address"
-                  onChange={handleInputChange}
-                  value={subcribEmail}
-                  className="ml-1"
-                />
               </div>
-              <button className="p-3 mt-4 mb-3 rounded-md focus:outline-none bg-black text-white hover:bg-red-700">
-                SUBSCRIBE
-              </button>
+            </div>
+            <div className="">
+              <div className="row">
+                <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
+                  <h2>Top Rated Products</h2>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                </div>
+                <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
+                  <h2>Top Rated Products</h2>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                </div>
+                <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
+                  <h2>Top Rated Products</h2>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                  <div className=" my-2">
+                    <SimpleSmallCard imageHight={100} imageWidth={100} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <section className="p-5 mt-6" style={{ border: "3px solid red" }}>
-            <CommonSlider
-              slidesItems={testomoniyaData}
-              titleStyle={titleStyle}
-              imageStyle={{
-                height: "70px",
-                width: "70px",
-                marginRight: "15px",
-                borderRadius: "50%",
-              }}
-              slideDuration={3000}
-            />
-          </section>
+          <div className="col-9 mx-auto col-md-3 col-lg-3">
+            <div className="border border-solid  border-blue-100 ">
+              <div className="text-center py-3 bg-slate-300">
+                <h4 className=" ">BROWSE CATEGORIES</h4>
+              </div>
+              <div className="px-3">
+                <CustomAccordion
+                  accordionItems={accordionItems}
+                  title={"My items"}
+                />
+                <CustomAccordion
+                  accordionItems={accordionItems}
+                  title={"My items"}
+                />
+                <CustomAccordion
+                  accordionItems={accordionItems}
+                  title={"My items"}
+                />
+                <CustomAccordion
+                  accordionItems={accordionItems}
+                  title={"My items"}
+                />
+                <CustomAccordion
+                  accordionItems={accordionItems}
+                  title={"My items"}
+                />
+              </div>
+            </div>
+            <div className="p-5 mt-6" style={{ border: "1px solid silver" }}>
+              <CommonSlider slidesItems={slidesItems} titleStyle={titleStyle} />
+            </div>
+            <div className="my-5">
+              <div className=" p-5 bg-slate-300 text-center">
+                <h3 className=" font-bold">SUBSCRIBE NEWSLETTER</h3>
+                <p className="my-5">
+                  Get all the latest information on Events, Sales and Offers.
+                </p>
+                <div
+                  className="flex items-center bg-white  px-4 "
+                  style={{
+                    borderRadius: "47px",
+                    overflow: "hidden",
+                    height: "45px",
+                  }}
+                >
+                  <div>
+                    <AiOutlineMail
+                      className="mt-1"
+                      style={{ fontSize: "30px" }}
+                    />
+                  </div>
+
+                  <CommonInput
+                    type="email"
+                    style={{ border: "none", height: "24px", padding: "5px" }}
+                    placeholder="Email Address"
+                    onChange={handleInputChange}
+                    value={subcribEmail}
+                    className="ml-1"
+                  />
+                </div>
+                <button className="p-3 mt-4 mb-3 rounded-md focus:outline-none bg-black text-white hover:bg-red-700">
+                  SUBSCRIBE
+                </button>
+              </div>
+            </div>
+            <section className="p-5 mt-6" style={{ border: "3px solid red" }}>
+              <CommonSlider
+                slidesItems={testomoniyaData}
+                titleStyle={titleStyle}
+                imageStyle={{
+                  height: "70px",
+                  width: "70px",
+                  marginRight: "15px",
+                  borderRadius: "50%",
+                }}
+                slideDuration={3000}
+              />
+            </section>
+          </div>
         </div>
       </section>
     </>

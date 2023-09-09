@@ -15,14 +15,14 @@ const SimpleSmallCard = ({
   ratingPoint,
   offerCutBalance,
   mainBalance,
-  cardStyle,
+
   imageHight,
   imageWidth,
   loveReact,
 }) => {
   return (
-    <div className="small-card" style={cardStyle}>
-      <div className="card-img-body" style={{ width: "60%" }}>
+    <div className="row">
+      <div className="card-img-body col-5">
         <Image
           src={firstImage}
           alt="Picture of the author"
@@ -41,20 +41,18 @@ const SimpleSmallCard = ({
         </div>
       </div>
 
-      <div className="">
-        <div className="">
-          <p className=" opacity-40">Women Red bag</p>
+      <div className="col-7">
+        <p className=" opacity-40">Women Red bag</p>
 
-          <StarRatingComponent
-            name="rate2"
-            editing={false}
-            renderStarIcon={() => <BsStarFill />}
-            starCount={5}
-            value={3}
-          />
+        <StarRatingComponent
+          name="rate2"
+          editing={false}
+          renderStarIcon={() => <BsStarFill />}
+          starCount={5}
+          value={3}
+        />
 
-          <p className="opacity-40">$250</p>
-        </div>
+        <p className="opacity-40">$250</p>
       </div>
     </div>
   );
