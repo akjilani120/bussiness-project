@@ -615,7 +615,39 @@ border-radius: 50%;
 }
 
 /* ====Use responsive class name over==== */
-
+/* =====Simple Progress start======= */
+.first-progre-bar, .second-progre-bar{
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg,#5c80d2,#b9d6fe);
+  padding-top: 0!important;
+  overflow: hidden;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+.second-progre-bar{
+  background: linear-gradient(90deg,#444,#c6c6c6);
+  width: 70%;
+}
+/* =====Simple Progress over====== */
+/* =====Simple Percentage Number start====== */
+.percent-body{
+  background-color: #0000009f;
+}
+.percent-number{
+  background: linear-gradient(90deg,#5c80d2,#b9d6fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+}
+.percent-arrow-icon{
+  color: #002bff;
+  height:70px;
+  width: 50px;
+  
+}
+/* =====Simple Percentage Number over====== */
 
 
 
