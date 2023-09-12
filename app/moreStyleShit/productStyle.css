@@ -47,7 +47,7 @@
 }
 
 .product-banner{
-  transform: scale(1.2);
+  transform: scale(1.1);
   
 }
 .products-body{
@@ -55,27 +55,24 @@
   position: fixed;
   transition: 1s;
   z-index: 9999;
-  backdrop-filter:saturate(180%) blur(20px);
-
+  backdrop-filter:saturate(90%) blur(20px);
+  width: 100%;
  
 }
 .slide-body{
    background-image: linear-gradient(135deg,#535353,#000 80%); 
    transition: 800ms;
 }
-.slide img {
-  
+.slick-slide img {
+  transition: transform 500ms;   
   margin: 0 auto;
+  transform: scale(0.3); 
 }
 
-.slide {  
-  transition: transform 900ms; 
-  transform: scale(0.3);  
-}
-
-.activeSlide {
+.slick-slide.slick-active.slick-center.slick-current img , .slide-first-img
+ {
   transform: scale(1.2);  
-  transition: transform 900ms; 
+  transition: transform 800ms; 
 
 }
 .slick-dots li{
@@ -98,8 +95,9 @@
 .slide-add-style{
   position: fixed;
   top: 0;
-  transition: 800ms;
+  transition: 600ms;
   z-index: 1;
+  width: 100%;
 }
 .car-light-body{
  
@@ -108,30 +106,13 @@
   height: 100vh;
  
 }
-/* .arrow {
-  background-color: #fff;
-  position: absolute;
-  cursor: pointer;
-  z-index: 10;
-}
 
-.arrow svg {
-  transition: color 300ms;
+.light-sec-overflow{
+  /* background-color: #000000cb; */
+  height: 100vh;
+  width: 100%;
+  transition: 800ms;
 }
-
-.arrow svg:hover {
-  color: #68edff;
-}
-
-.next {
-  right: 0%;
-  top: 50%;
-}
-
-.prev {
-  left: 0%;
-  top: 50%;
-} */
 .switch-btn-items {
   width: 100px;
   height: 30px;
@@ -152,4 +133,26 @@
 .switch-btn-body:hover .switch-btn-abslt{
   left: 60px; 
   transition: 800ms;
+}
+.video-show{
+  width: 500px;
+  height: 500px;
+}
+@media  (max-width:920px) {
+  .light-sec-overflow{
+    background-color: transparent;
+  }
+  .video-show{
+    width: 350px;
+    height: 400px;
+  }
+  .product-banner{
+    width: 380px;
+    height: 400px;
+    transform: scale(1);
+  }
+  .percent-body{
+    height: 100%;
+  }
+ 
 }

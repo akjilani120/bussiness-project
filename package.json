@@ -9,14 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@coreui/react": "^5.0.0-alpha.0",
-    "@react-three/drei": "^9.82.0",
-    "@react-three/fiber": "^8.14.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
     "flowbite-react": "^0.5.0",
-    "gltf-pipeline": "^0.1.0-alpha3",
     "next": "13.4.6",
     "postcss": "8.4.24",
     "react": "18.2.0",

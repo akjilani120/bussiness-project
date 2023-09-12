@@ -11,12 +11,26 @@ const AboutPage = () => {
   const [smallNav, setSmallNav] = useState(false);
   const [slideSec, setslideSec] = useState(false);
   const [parsheSec, setParsheSec] = useState(false);
-  const [singleParshTitles, setsingleParshTitles] = useState(false);
-  const [singleParsh, setSingleParsh] = useState(false);
-  const [singleParsh2, setSingleParsh2] = useState(false);
-  const [slideSetting, setSlideSetting] = useState();
+  const [singleParshTitles, setsingleParshTitles] = useState({
+    lgTitle: false,
+    smTitle: false,
+  });
+  const [aboutParshe, setAboutParshe] = useState({});
+  const [singleParsh, setSingleParsh] = useState({
+    lgParse: false,
+    smParse: false,
+  });
+  const [singleParshVideo, setSingleParshVideo] = useState({
+    lgVideoShow: false,
+    smVideoShow: false,
+  });
   const [lightSec, setLightSec] = useState(false);
-  const [lightOpacSec2, setLightOpacSec2] = useState(false);
+  const [lightOpacSec2, setLightOpacSec2] = useState({
+    lgLightOpa: false,
+    smlLightOpa: false,
+  });
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const handleSmallNav = () => {
     if (window.scrollY >= 170) {
       setSmallNav(true);
@@ -25,51 +39,94 @@ const AboutPage = () => {
     }
   };
   const handleSlideSec = () => {
-    if (window.scrollY >= 875 && window.scrollY <= 1250) {
-      setslideSec(true);
-    } else {
-      setslideSec(false);
+    if (screenWidth >= 955 && screenHeight >= 850) {
+      if (window.scrollY >= 875 && window.scrollY <= 1250) {
+        setslideSec(true);
+      } else {
+        setslideSec(false);
+      }
     }
   };
   const handleParshSec = () => {
-    if (window.scrollY >= 1700 && window.scrollY <= 2300) {
-      setParsheSec(true);
+    if (screenWidth >= 955 && screenHeight >= 850) {
+      if (window.scrollY >= 1700 && window.scrollY <= 2300) {
+        setParsheSec(true);
 
-      if (window.scrollY >= 1700 && window.scrollY <= 1850) {
-        setsingleParshTitles(true);
+        if (window.scrollY >= 1700 && window.scrollY <= 1850) {
+          setsingleParshTitles({
+            lgTitle: true,
+            smTitle: false,
+          });
+        } else {
+          setsingleParshTitles({
+            lgTitle: false,
+          });
+        }
+        if (window.scrollY >= 1851 && window.scrollY <= 2150) {
+          setSingleParsh({
+            lgParse: true,
+            smParse: false,
+          });
+        } else {
+          setSingleParsh({
+            lgParse: false,
+          });
+        }
+        if (window.scrollY >= 2151 && window.scrollY <= 2300) {
+          setSingleParshVideo({
+            lgVideoShow: true,
+            smVideoShow: false,
+          });
+        } else {
+          setSingleParshVideo({
+            lgVideoShow: false,
+          });
+        }
       } else {
-        setsingleParshTitles(false);
-      }
-      if (window.scrollY >= 1851 && window.scrollY <= 2150) {
-        setSingleParsh(true);
-      } else {
-        setSingleParsh(false);
-      }
-      if (window.scrollY >= 2151 && window.scrollY <= 2300) {
-        setSingleParsh2(true);
-      } else {
-        setSingleParsh2(false);
+        setParsheSec(false);
       }
     } else {
-      setParsheSec(false);
+      setsingleParshTitles({
+        smTitle: true,
+      });
+      setSingleParshVideo({
+        smVideoShow: true,
+      });
     }
   };
+
   const handleLight = () => {
-    if (window.scrollY >= 2600 && window.scrollY <= 3000) {
-      setLightSec(true);
-      if (window.scrollY >= 2750 && window.scrollY <= 3000) {
-        setLightOpacSec2(true);
+    if (screenWidth >= 955 && screenHeight >= 850) {
+      if (window.scrollY >= 2600 && window.scrollY <= 3000) {
+        setLightSec(true);
+        if (window.scrollY >= 2750 && window.scrollY <= 3000) {
+          setLightOpacSec2({
+            lgLightOpa: true,
+            smlLightOpa: false,
+          });
+        } else {
+          setLightOpacSec2({
+            lgLightOpa: false,
+          });
+        }
       } else {
-        setLightOpacSec2(false);
+        setLightSec(false);
       }
     } else {
-      setLightSec(false);
+      setLightOpacSec2({
+        smlLightOpa: true,
+      });
     }
   };
   useEffect(() => {
     const handleCheckLenght = () => {
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
     };
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+      setScreenHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleCheckLenght);
     window.addEventListener("scroll", handleSmallNav);
     window.addEventListener("scroll", handleSlideSec);
@@ -91,8 +148,6 @@ const AboutPage = () => {
     return <div className="arrow prev" onClick={onClick}></div>;
   };
 
-  const [imageIndex, setImageIndex] = useState(0);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -105,7 +160,6 @@ const AboutPage = () => {
     autoplaySpeed: 2000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    beforeChange: (current, next) => setImageIndex(next),
     appendDots: (dots) => (
       <div
         style={{
@@ -123,24 +177,30 @@ const AboutPage = () => {
       <section
         className={
           smallNav
-            ? "container  products-body border-b-2 border-gray-200 py-1"
-            : "container   border-b-2 border-gray-200 py-1"
+            ? "products-body border-b-2 border-gray-200 py-1 "
+            : " border-b-2 border-gray-200 py-1  "
         }
       >
-        <div className="flex justify-between items-center  ">
-          <h6 className=" font-medium text-lg ">Bugati J20</h6>
-          <div className="flex">
-            <p className=" text-sm  font-semibold mt-2 text-black">Overview</p>
-            <div className=" ml-24">
-              <SimpleButton
-                title={"Buy now"}
-                style={{
-                  padding: "8px 10px",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  borderRadius: "40px",
-                }}
-              />
+        <div className="container">
+          <div className="row  ">
+            <div className="col-12 flex justify-between items-center ">
+              <h6 className=" font-medium text-lg ">Bugati J20</h6>
+              <div className="flex">
+                <p className=" text-sm  font-semibold mt-2 text-black">
+                  Overview
+                </p>
+                <div className=" ml-20">
+                  <SimpleButton
+                    title={"Buy now"}
+                    style={{
+                      padding: "8px 10px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      borderRadius: "40px",
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -174,7 +234,7 @@ const AboutPage = () => {
             Photography Redefined
           </h1>
         </div>
-        <div className=" absolute bottom-0  " style={{ left: "35%" }}>
+        <div className=" absolute bottom-0  lg:left-60 md:left-20  left-6">
           <Image
             className="product-banner"
             src={bannerImage}
@@ -198,14 +258,13 @@ const AboutPage = () => {
             <div>
               <Slider {...settings}>
                 {images.map((img, idx) => (
-                  <div
-                    key={idx}
-                    className={
-                      idx === imageIndex ? "slide activeSlide" : "slide"
-                    }
-                  >
+                  <div key={idx}>
                     {" "}
-                    <img src={img} alt={img} />
+                    <img
+                      className={idx === 1 ? "slide-first-img" : ""}
+                      src={img}
+                      alt="slide image"
+                    />
                   </div>
                 ))}
               </Slider>
@@ -230,22 +289,28 @@ const AboutPage = () => {
               className="mx-auto"
               src="https://hagerty-media-prod.imgix.net/2020/11/Bugatti-Chiron-Pur-Sport-show-car-10-scaled.jpg?auto=format%2Ccompress&ixlib=php-3.3.0"
               alt=""
-              style={{ height: "100vh" }}
+              style={{ height: "100vh", width: "100%" }}
             />
             <div
-              className=" absolute  text-center text-white"
+              className={" absolute  text-center text-white"}
               style={
-                singleParshTitles
+                singleParshTitles.lgTitle || singleParshTitles.smTitle
                   ? {
-                      top: "25%",
-                      left: "30%",
-                      transition: "500ms",
+                      top: singleParshTitles.smTitle ? "5%" : "25%",
+                      left: singleParshTitles.smTitle ? "10%" : "30%",
+                      transition: "800ms",
+                      borderRadius: "50%",
                       opacity: "1",
                     }
-                  : { opacity: "0" }
+                  : {
+                      top: "5%",
+                      left: "10%",
+                      transition: "800ms",
+                      opacity: "0",
+                    }
               }
             >
-              <h1 className=" font-semibold font-mono text-3xl">
+              <h1 className=" font-semibold font-mono text-4xl">
                 This is best Looking head light
               </h1>
               <p>
@@ -255,19 +320,16 @@ const AboutPage = () => {
             <div
               className=" absolute  w-1/2 mx-auto"
               style={
-                singleParsh
+                singleParsh.lgParse
                   ? {
                       top: "25%",
                       left: "30%",
-                      transition: "500ms",
+                      transition: "800ms",
                       borderRadius: "50%",
                       opacity: "1",
                     }
                   : {
-                      top: "15%",
-                      left: "30%",
-                      transition: "500ms",
-                      borderRadius: "50%",
+                      transition: "800ms",
                       opacity: "0",
                     }
               }
@@ -276,7 +338,7 @@ const AboutPage = () => {
                 src="https://i.pinimg.com/1200x/2c/c9/27/2cc92751cf614f73f162c784fdba07e9.jpg"
                 alt=""
                 style={
-                  singleParsh
+                  singleParsh.lgParse
                     ? { borderRadius: "50%", transform: "scale(1.2)" }
                     : { borderRadius: "50%" }
                 }
@@ -285,82 +347,79 @@ const AboutPage = () => {
             <div
               className=" absolute  w-1/2 mx-auto"
               style={
-                singleParsh2
+                singleParshVideo.lgVideoShow || singleParshVideo.smVideoShow
                   ? {
                       top: "25%",
-                      left: "30%",
-                      transition: "500ms",
+                      left: singleParshVideo.smVideoShow ? "10%" : "30%",
+                      transition: "800ms",
                       borderRadius: "50%",
                       opacity: "1",
                     }
                   : {
-                      top: "25%",
-                      left: "30%",
-                      transition: "500ms",
-                      borderRadius: "50%",
+                      top: "40%",
+                      left: "10%",
+                      transition: "800ms",
                       opacity: "0",
                     }
               }
             >
               <iframe
-                width="500"
-                height="500"
+                className="video-show"
                 src="https://www.youtube.com/embed/_0YXkCN4yJw"
                 title="BUGATTI CHIRON PUR SPORT"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                // allowfullscreen
               ></iframe>
             </div>
           </div>
         </div>
       </section>
       <section
-        className=" relative bg-black  text-white"
-        style={
-          parsheSec
-            ? { marginTop: "650px", height: "100vh" }
-            : { marginTop: "0", height: "100vh" }
-        }
+        className=" relative   text-white"
+        style={parsheSec ? { marginTop: "650px" } : { marginTop: "0" }}
       >
         <div
           className={
             lightSec
-              ? "car-light-body flex justify-center items-center slide-add-style w-full"
-              : "car-light-body flex justify-center items-center"
+              ? "car-light-body  slide-add-style w-full"
+              : "car-light-body "
           }
-          style={
-            lightOpacSec2
-              ? {
-                  backgroundImage: `url("https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")`,
-                  opacity: "1",
-                  transition: "1s",
-                }
-              : {
-                  backgroundImage: `url("https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")`,
-                  opacity: "0.2",
-                  transition: "1s",
-                }
-          }
+          style={{
+            backgroundImage: `url("https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")`,
+          }}
         >
-          <div className=" w-3/4">
-            <h1 className=" font-mono font-semibold text-4xl text-center mb-8">
-              One Tap to Light It up
-            </h1>
-            <img
-              style={{ width: "90% ", height: "350px" }}
-              src="https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-              alt="light pic"
-            />
-            <div className="relative switch-btn-body text-center mt-5">
-              <div className="switch-btn-items">
-                <span>ON</span> <span className=" ml-6">OFF</span>
+          <div className="relative w-full flex justify-center items-center h-full">
+            <div className=" w-3/4">
+              <h1 className=" font-mono font-semibold text-4xl text-center mb-8">
+                One Tap to Light It up
+              </h1>
+              <img
+                style={{ width: "90% ", height: "350px" }}
+                src="https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="light pic"
+              />
+              <div className="relative switch-btn-body text-center mt-5">
+                <div className="switch-btn-items">
+                  <span>ON</span> <span className=" ml-6">OFF</span>
+                </div>
+                <div
+                  className="switch-btn-abslt absolute top-0 "
+                  style={
+                    lightOpacSec2.lgLightOpa || lightOpacSec2.smlLightOpa
+                      ? { left: "60px" }
+                      : { left: "0" }
+                  }
+                ></div>
               </div>
-              <div
-                className="switch-btn-abslt absolute top-0 "
-                style={lightOpacSec2 ? { left: "60px" } : { left: "0" }}
-              ></div>
             </div>
+            <div
+              className="light-sec-overflow absolute top-0 left-0"
+              style={
+                lightOpacSec2.lgLightOpa || lightOpacSec2.smlLightOpa
+                  ? { backgroundColor: "transparent", transition: "500ms" }
+                  : { backgroundColor: "#000000cb" }
+              }
+            ></div>
           </div>
         </div>
       </section>
@@ -372,20 +431,21 @@ const AboutPage = () => {
               }
             : {
                 marginTop: "0",
-                height: "80vh",
+                height: "100vh",
                 backgroundImage: `url("https://car-images.bauersecure.com/wp-images/151407/screenshot_2022-06-06_at_18.40.37.png")`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
+                width: "100%",
               }
         }
       >
         <div
-          className="container flex justify-center items-center pb-6 percent-body"
-          style={{ height: "80vh", width: "100%" }}
+          className="flex justify-center items-center py-6  percent-body w-full"
+          style={{ height: "100vh" }}
         >
-          <div>
-            <div className="row my-5">
+          <div className="container">
+            <div className="row my-5 ">
               <div className="col-12 ">
                 <h1 className="text-white text-center font-semibold font-sans mb-7 text-4xl">
                   Improved for smoother Exprerice

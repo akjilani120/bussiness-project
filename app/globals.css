@@ -38,8 +38,8 @@ body {
 
 .indicator {
   cursor: pointer;
-  width: 14px;
-  height: 14px;  
+  width: 15px;
+  height: 15px;  
   text-align: center;
   border: 2px #ee4147 solid;
   margin: 2px;
@@ -51,8 +51,8 @@ body {
   content: '';
 position: absolute;
 background-color: #ee4147;
-width: 8px;
-height: 8px;
+width: 10px;
+height: 10px;
 top: 1px;
 left: 1px;
 transform: translate(-0% , 3%);
