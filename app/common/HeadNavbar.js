@@ -62,30 +62,37 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="" onClick={handleClick}>
-                <FiSearch activeClassName="active" className="nav-links" />
+              <Link href="" className="nav-links " onClick={handleClick}>
+                <FiSearch activeClassName="active" className="navbar-icons" />
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/accout/login" onClick={handleClick}>
-                <BiSolidUser className="nav-links" activeClassName="active" />
+              <Link
+                className="nav-links "
+                href="/accout/login"
+                onClick={handleClick}
+              >
+                <BiSolidUser
+                  activeClassName="active"
+                  className="navbar-icons"
+                />
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="" onClick={handleClick}>
-                <BiHeart activeClassName="active" className="nav-links" />
+              <Link href="" className="nav-links " onClick={handleClick}>
+                <BiHeart activeClassName="active" className="navbar-icons" />
               </Link>
             </li>
             <li className="nav-item">
               <Link
                 href=""
                 activeClassName="active"
-                className="nav-links"
+                className="nav-links "
                 onClick={handleClick}
               >
                 <CiShoppingCart
                   activeClassName="active"
-                  className="nav-links"
+                  className="navbar-icons"
                 />
               </Link>
             </li>

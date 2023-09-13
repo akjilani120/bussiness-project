@@ -1,6 +1,6 @@
 /*======= Navbar style start ==== */
 .navbar {
-    background-color: #1f5156;
+    background-color: #011022;
     height: 70px;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     font-size: 18px;
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 999;
   }
   
   .nav-container {
@@ -18,10 +18,11 @@
     width: 100%;
     height: 80px;
     max-width: 1500px;
+    z-index: 999;
   }
   
   .nav-logo {
-    color: #f5b921;
+    color: white;
     align-items: center;
     margin-left: 20px;
     cursor: pointer;
@@ -79,35 +80,45 @@
   .nav-icon {
     display: none;
   }
-  
-  @media screen and (max-width: 960px) {
+  .navbar-icons{
+    margin-top: 10px;
+    height: 25px;
+    width: 25px;
+    color: white;
+  }
+  @media  (max-width: 960px) {
+    
     .nav-menu {
       display: flex;
       flex-direction: column;
       width: 100%;
-      border-top: 1pxsolid #fff;
+      border-top: 1px solid #fff;
       position: absolute;
-      top: 80px;
+      top: 65px;
       left: -110%;
       opacity: 1;
       transition: all 0.5s ease;
     }
-  
+    
     .nav-menu.active {
-      background: #1f5156;
+      background: #011022;
       left: 0px;
       opacity: 1;
       transition: all 0.5s ease;
       z-index: 1;
+      height: 100vh;
+      top: 65px;
+      position: fixed;
     }
     .nav-item .active {
       color: #ffdd40;
       border: none;
     }
     .nav-links {
-      padding: 1.5rem;
+      padding: 10px;
       width: 100%;
-      display: table;
+      display: flex;
+      justify-content: center;
     }
   
     .nav-icon {
@@ -116,9 +127,10 @@
       top: 0;
       right: 0;
       transform: translate(-100%, 60%);
-      font-size: 1.8rem;
+      font-size: 20px;
       cursor: pointer;
-      color: #ffdd40;
+      color: white;
     }
+    
   }
   /*======= Navbar style over ==== */
