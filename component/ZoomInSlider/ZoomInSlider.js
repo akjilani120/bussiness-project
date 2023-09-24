@@ -2,44 +2,56 @@
 import React from "react";
 import { Zoom } from "react-slideshow-image";
 import SimpleButton from "../Extra-method/SimpleButton";
-
 const ZoomInSliderBanner = ({
-  images,
   style,
-  littleDiscri,
-  title,
-  offerBalance,
-  moreOFBtn,
   isIndicators,
   arrowsShow,
+  zoomslideItems,
 }) => {
   const indicators = (index) => <div className="indicator"></div>;
   return (
     <div>
-      {images ? (
+      {zoomslideItems ? (
         <Zoom
           scale={1.4}
           indicators={isIndicators ? indicators : false}
           arrows={arrowsShow ? arrowsShow : false}
           duration={2000}
         >
-          {images.map((each, index) => (
+          {zoomslideItems.map((item, index) => (
             <div
               key={index}
-              className="flex justify-center items-center"
+              className="flex  justify-start items-end"
               style={{
-                backgroundImage: `url(${each})`,
+                backgroundImage: `url(${item?.image})`,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 ...style,
               }}
             >
-              <div>
-                {littleDiscri ? <p>{littleDiscri}</p> : null}
-                {title ? <h1>{title}</h1> : null}
-                {offerBalance ? <h2>{offerBalance}</h2> : null}
-                {moreOFBtn ? <SimpleButton title={moreOFBtn} /> : null}
+              <div className="mb-5 ml-4">
+                {item?.littleDiscri ? (
+                  <p
+                    style={{
+                      color: " rgba(255, 255, 255, 0.7)",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {item?.littleDiscri}
+                  </p>
+                ) : null}
+                {item?.title ? (
+                  <h1 className="zoomslide-title m-0 p-0">{item?.title}</h1>
+                ) : null}
+                {item?.offerBalance ? (
+                  <h2 className=" p-0 text-white zoomslide-offer">
+                    {item?.offerBalance}
+                  </h2>
+                ) : null}
+                {item?.moreOFBtn ? (
+                  <SimpleButton title={item?.moreOFBtn} />
+                ) : null}
               </div>
             </div>
           ))}

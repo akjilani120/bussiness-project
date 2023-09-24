@@ -363,13 +363,18 @@ const AboutPage = () => {
                     }
               }
             >
-              <iframe
+              {/* <iframe
                 className="video-show"
                 src="https://www.youtube.com/embed/_0YXkCN4yJw"
                 title="BUGATTI CHIRON PUR SPORT"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
+              ></iframe> */}
+              <video
+                controls
+                autoplay
+                src="https://player.vimeo.com/external/425782758.sd.mp4?s=7a8157cf3904119459a88ff96b2363f2fe7dd530&profile_id=164&oauth2_token_id=57447761"
+              ></video>
             </div>
           </div>
         </div>

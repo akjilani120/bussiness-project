@@ -1,5 +1,6 @@
 import React from "react";
 import "./bannerCardStyle.css";
+import Image from "next/image";
 
 const BannerCard = ({ cardTitle, aboutDiscri, desCPersentage }) => {
   return (
@@ -19,7 +20,7 @@ const BannerCard = ({ cardTitle, aboutDiscri, desCPersentage }) => {
           <p class="card-hover__text">
             {aboutDiscri
               ? aboutDiscri
-              : "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut? "}
+              : "The car has special offer. The car best features is you can use anywhere like heal , pond and up down place. "}
           </p>
           <a href="#" class="card-hover__link">
             <span>Learn How</span>
@@ -43,9 +44,15 @@ const BannerCard = ({ cardTitle, aboutDiscri, desCPersentage }) => {
             <span>{desCPersentage ? desCPersentage : "40%"}</span> discount!
           </h4>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60"
+        {/* <img
+          src="https://images.unsplash.com/photo-1579508542697-bb18e7d9aeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
           alt="banner img"
+        /> */}
+        <Image
+          src="https://images.unsplash.com/photo-1617650727577-950c8e4cf977?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JlZW4lMjBjYXJ8ZW58MHx8MHx8fDA%3D&w=200&q=80"
+          alt="banner image"
+          height={200}
+          width={200}
         />
       </div>
     </div>

@@ -4,6 +4,6 @@ const nextConfig = {};
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["media.geeksforgeeks.org"],
+    domains: ["images.unsplash.com", "www.freepnglogos.com"],
   },
 };

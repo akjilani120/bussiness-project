@@ -8,18 +8,9 @@ import firstImage from "../../public/case-1.jpeg";
 import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
 import { useState } from "react";
-const SimpleCard = ({
-  images,
-  offerPercentage,
-  productName,
-  ratingPoint,
-  offerCutBalance,
-  mainBalance,
-  cardStyle,
-  imageHight,
-  imageWidth,
-  loveReact,
-}) => {
+const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
+  const { id, productShowImg, name, rating, offerPercentage, price } = data;
+
   const [addColor, setAddColor] = useState(false);
   const handleColor = () => {
     setAddColor(!addColor);
@@ -28,20 +19,34 @@ const SimpleCard = ({
     <div className="card" style={cardStyle}>
       <div className="card-img-body">
         <div className="">
-          <Image
+          {/* <Image
             src={firstImage}
             alt="Picture of the author"
-            width={imageWidth}
-            height={imageHight}
+            width={331}
+            height={334}
+          /> */}
+          <Image
+            src={productShowImg[0]}
+            alt="Picture of the author"
+            width={331}
+            height={334}
+            className="card-img1"
           />
         </div>
         <div className="card-second-image">
-          <Image
+          {/* <Image
             src={secondImage}
             className="card-img2"
             alt="Picture of the author"
-            width={imageWidth}
-            height={imageHight}
+            width={331}
+            height={334}
+          /> */}
+          <Image
+            src={productShowImg[1]}
+            className="card-img2"
+            alt="Picture of the author"
+            width={331}
+            height={334}
           />
         </div>
         <div className="card-icons z-40">
@@ -49,23 +54,27 @@ const SimpleCard = ({
           <GrView className=" inline    card-icon" />
         </div>
         <div className="card-offer">
-          <span className="text-sm">-41%</span>
+          {offerPercentage ? (
+            <span className="text-sm">{offerPercentage}</span>
+          ) : (
+            ""
+          )}
         </div>
       </div>
 
       <div className="flex justify-between mt-1 ">
         <div className="">
-          <p className=" opacity-40">Women Red bag</p>
+          {name ? <p className=" opacity-40">{name}</p> : ""}
 
           <StarRatingComponent
             name="rate2"
             editing={false}
             renderStarIcon={() => <BsStarFill />}
             starCount={5}
-            value={3}
+            value={rating}
           />
 
-          <p className="opacity-40">$250</p>
+          <p className="opacity-40">${price}</p>
         </div>
         <div>
           <BsFillHeartFill

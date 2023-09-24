@@ -1,6 +1,6 @@
 "use client";
 import BannerCard from "@/component/BannerCard/BannerCard";
-
+import dynamic from "next/dynamic";
 import ZoomInSliderBanner from "@/component/ZoomInSlider/ZoomInSlider";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
@@ -15,12 +15,37 @@ import SimpleCard from "@/component/SimpleCard/SimpleCard";
 import CommonInput from "@/component/formComponent/CommonInput";
 import { useState } from "react";
 import Image from "next/image";
+import Datas from "../productDatas/datas.json";
+import { data } from "autoprefixer";
 export default function Home() {
-  const images = [
-    "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-    "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+  const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+    ssr: false,
+  });
+  const zoomslideItems = [
+    {
+      image: "https://images7.alphacoders.com/117/thumbbig-1172131.webp",
+      littleDiscri: "My company has latest car",
+      offerBalance: "50% OFF",
+      title: "Summer Offer",
+      moreOFBtn: "About More",
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1579508542697-bb18e7d9aeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      littleDiscri: "The car has a special offer",
+      offerBalance: "60% OFF",
+      title: "Eid Offer",
+      moreOFBtn: "About More",
+    },
+    {
+      image: "https://images4.alphacoders.com/757/thumbbig-757610.webp",
+      littleDiscri: "The offer will have just 5 days",
+      offerBalance: "70% OFF",
+      title: "Winter Offer",
+      moreOFBtn: "About More",
+    },
   ];
+
   const accordionItems = ["First items", "Second items", "Third items"];
   const titleStyle = {
     fontSize: "70px",
@@ -90,13 +115,46 @@ export default function Home() {
       description: "This is best ecommerce website",
     },
   ];
+
   return (
     <>
-      <section className="container my-4">
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={8}
+        color="0,0,0"
+        outerAlpha={0.3}
+        innerScale={0.7}
+        outerScale={5}
+        clickables={[
+          "a",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "span",
+          ".link",
+          "p",
+          {
+            target: ".custom",
+            options: {
+              innerSize: 12,
+              outerSize: 12,
+              color: "0,0,0",
+              outerAlpha: 0.6,
+              innerScale: 0.6,
+              outerScale: 5,
+            },
+          },
+        ]}
+      />
+
+      <section className="container-body my-4">
         <div className="row">
           <div className="col-lg-9 col-md-12 col-12">
             <ZoomInSliderBanner
-              images={images}
+              zoomslideItems={zoomslideItems}
               style={{ height: "500px" }}
               isIndicators={true}
             />
@@ -106,7 +164,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container  py-6  bg-sky-950 ">
+      <section className="container-body  py-6  bg-sky-950 ">
         <div className="row ">
           <div className="col-11 mx-auto col-lg-4 col-md-6  md:my-3 lg:my-0 my-5">
             <NameplateCard
@@ -131,19 +189,18 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container py-7">
+      <section className="container-body py-7">
         <div className="row">
           <div className="col-12 col-md-9 col-lg-9">
             <div className="row">
-              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
-                <SimpleCard />
-              </div>
-              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
-                <SimpleCard />
-              </div>
-              <div className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0v">
-                <SimpleCard />
-              </div>
+              {Datas.slice(1, 10)?.map((data) => (
+                <div
+                  key={data.id}
+                  className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
+                >
+                  <SimpleCard data={data} />
+                </div>
+              ))}
             </div>
             <div className="p pr-2 my-5">
               <div

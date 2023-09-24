@@ -11,15 +11,16 @@
     top: 0;
       
 }
+.card-second-image{
+    width: 331px;
+    height: 334px;
+}
 .card-icons{
     top: 15px;
      left: 60%;
      display: none;
 }
-.card-img{
-    height: 100%;
-    width: 100%;
-}
+
 .card-offer{
     left: 1%;
     background-color: red;
@@ -27,9 +28,16 @@
     padding: 2px;
     top: 10px;
 }
+.card-img1{
+    width: 331px;
+height: 300px;
+}
 .card-img2{
 display: none;
 transition: 2s;
+width: 331px;
+height: 300px;
+
 }
 .card-img-body:hover .card-img2  {
 display: block;

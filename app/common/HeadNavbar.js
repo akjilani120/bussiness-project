@@ -43,7 +43,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                href=""
+                href="/common"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}

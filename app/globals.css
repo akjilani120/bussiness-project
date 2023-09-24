@@ -13,15 +13,7 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+
 *{
   padding: 0;
   margin: 0;
@@ -60,6 +52,19 @@ border-radius: 50%;
  
   
 }
+/* =============Zoom slider style Start============= */
+.zoomslide-title{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  font-size: 43px;       
+  color: white;
+}
+.zoomslide-offer{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 76px;
+  font-weight: bold;
+}
+/* =============Zoom slider style over============= */
 /*====== Button style start==== */
 .glow-on-hover {
   padding: 10px 15px;
@@ -121,37 +126,15 @@ border-radius: 50%;
 }
 
 /* ====Use responsive class name start==== */
-.container {
-  width: 100%;
+.container-body {
+  width: 100% ;
   padding-right: 18px;
   padding-left: 18px;
   margin-right: auto;
   margin-left: auto;
 }
 
-/* @media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-} */
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
