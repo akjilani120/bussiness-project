@@ -13,11 +13,34 @@ import SimpleSmallCard from "@/component/SimpleCard/SimpleSmallCard";
 import NameplateCard from "@/component/NameplateCard/NameplateCard";
 import SimpleCard from "@/component/SimpleCard/SimpleCard";
 import CommonInput from "@/component/formComponent/CommonInput";
-import { useState } from "react";
-import Image from "next/image";
-import Datas from "../productDatas/datas.json";
-import { data } from "autoprefixer";
-export default function Home() {
+import { useEffect, useState } from "react";
+
+export async function getData() {
+  const res = await fetch("datas.json");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const datas = await res.json();
+  return datas;
+}
+const Home = () => {
+  const [datas, setDatas] = useState([]);
+  const [subcribEmail, setSubcribEmail] = useState("");
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setSubcribEmail(value);
+  };
+
+  useEffect(() => {
+    const cashData = async () => {
+      const datas = await getData();
+      setDatas(datas);
+    };
+    cashData();
+  }, []);
+
   const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
     ssr: false,
   });
@@ -56,11 +79,7 @@ export default function Home() {
     alignItems: "center",
     margin: "20px 0px",
   };
-  const [subcribEmail, setSubcribEmail] = useState("");
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSubcribEmail(value);
-  };
+
   const slidesItems = [
     {
       image:
@@ -193,14 +212,18 @@ export default function Home() {
         <div className="row">
           <div className="col-12 col-md-9 col-lg-9">
             <div className="row">
-              {Datas.slice(1, 10)?.map((data) => (
-                <div
-                  key={data.id}
-                  className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
-                >
-                  <SimpleCard data={data} />
-                </div>
-              ))}
+              {datas.length === 0 ? (
+                <h1 className=" ml-5 font-bold my-2">Loading.......</h1>
+              ) : (
+                datas.slice(1, 10)?.map((data) => (
+                  <div
+                    key={data.id}
+                    className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
+                  >
+                    <SimpleCard data={data} />
+                  </div>
+                ))
+              )}
             </div>
             <div className="p pr-2 my-5">
               <div
@@ -210,12 +233,31 @@ export default function Home() {
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
-                  height: "350px",
+                  height: "400px",
                 }}
               >
-                <div className="showCar-overflow flex justify-center items-center">
-                  <div>
-                    <h1>Abdul Kader Jilani</h1>
+                <div className="showCar-overflow flex justify-center items-center p-5">
+                  <div
+                    className=" flex justify-center items-center"
+                    style={{
+                      backgroundImage: `url("https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGNhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1400&q=80")`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      height: "100%",
+                      width: "100%",
+                    }}
+                  >
+                    <div>
+                      <h1 className="text-center text-4xl font-bold font-mono text-sky-700">
+                        Mercedes Benz
+                      </h1>
+                      <p className=" text-justify text-lg font-medium">
+                        {" "}
+                        The Mercedes Benz has special offer. We are giving 40%
+                        discout.This discout time is limited{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -363,4 +405,15 @@ export default function Home() {
       </section>
     </>
   );
+};
+export async function getStaticProps() {
+  const res = await fetch("datas.json");
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
+export default Home;

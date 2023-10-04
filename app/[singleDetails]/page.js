@@ -1,13 +1,24 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "../moreStyleShit/productStyle.css";
-import bannerImage from "../../public/Images/single_product/single-banner.png";
+
 import Image from "next/image";
 import Slider from "react-slick";
 import SimpleButton from "@/component/Extra-method/SimpleButton";
 import SimpleProgress from "@/component/SimpleProgress/SimpleProgress";
 import SimpleParcentNumber from "@/component/SimpleParcentNumber/SimpleParcentNumber";
-const AboutPage = () => {
+import datas from "../../productDatas/datas.json";
+
+const AboutPage = ({ params }) => {
+  let data;
+  if (params.singleDetails != "" && datas.length != 0) {
+    datas?.find((item) => {
+      if (item.model == params.singleDetails) {
+        data = item;
+      }
+    });
+  }
+
   const [smallNav, setSmallNav] = useState(false);
   const [slideSec, setslideSec] = useState(false);
   const [parsheSec, setParsheSec] = useState(false);
@@ -119,27 +130,17 @@ const AboutPage = () => {
     }
   };
   useEffect(() => {
-    const handleCheckLenght = () => {
-      // console.log(window.scrollY);
-    };
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
       setScreenHeight(window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleCheckLenght);
     window.addEventListener("scroll", handleSmallNav);
     window.addEventListener("scroll", handleSlideSec);
     window.addEventListener("scroll", handleParshSec);
     window.addEventListener("scroll", handleLight);
   }, []);
 
-  const images = [
-    "https://images.unsplash.com/photo-1579508542697-bb18e7d9aeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1395&q=80",
-    "https://images.unsplash.com/photo-1579508542697-bb18e7d9aeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-  ];
   const NextArrow = ({ onClick }) => {
     return <div className="arrow next" onClick={onClick}></div>;
   };
@@ -184,12 +185,12 @@ const AboutPage = () => {
         <div className="container">
           <div className="row  ">
             <div className="col-12 flex justify-between items-center ">
-              <h6 className=" font-medium text-lg ">Bugati J20</h6>
+              <h6 className=" font-medium text-lg  ml-4">{data?.model}</h6>
               <div className="flex">
                 <p className=" text-sm  font-semibold mt-2 text-black">
                   Overview
                 </p>
-                <div className=" ml-20">
+                <div className="  lg:ml-20 md:ml-5 ml-4">
                   <SimpleButton
                     title={"Buy now"}
                     style={{
@@ -208,8 +209,10 @@ const AboutPage = () => {
       <section className=" my-5 mx-auto relative" style={{ height: "90vh" }}>
         <div className=" text-center pt-5">
           <h1 className="text-6xl font-semibold font-mono">
-            J20{" "}
-            <span className=" rounded-full border border-black p-2">V5</span>
+            {data?.model}
+            <span className=" rounded-full border border-black p-2">
+              {data?.version}
+            </span>
           </h1>
           <h4
             className=" text-2xl font-semibold p-0 mt-2 font-mono"
@@ -224,7 +227,7 @@ const AboutPage = () => {
               }}
               className=" text-white"
             >
-              Bugati{" "}
+              {data?.brand}
             </span>
           </h4>
           <h1
@@ -237,7 +240,7 @@ const AboutPage = () => {
         <div className=" absolute bottom-0  lg:left-60 md:left-20  left-6">
           <Image
             className="product-banner"
-            src={bannerImage}
+            src={data?.modelImage}
             height={600}
             width={600}
             alt="banner"
@@ -257,12 +260,14 @@ const AboutPage = () => {
           <div className="container">
             <div>
               <Slider {...settings}>
-                {images.map((img, idx) => (
+                {data?.productShowImg.map((img, idx) => (
                   <div key={idx}>
                     {" "}
-                    <img
+                    <Image
                       className={idx === 1 ? "slide-first-img" : ""}
                       src={img}
+                      height={600}
+                      width={600}
                       alt="slide image"
                     />
                   </div>
@@ -285,10 +290,11 @@ const AboutPage = () => {
           style={{ height: "100vh" }}
         >
           <div className=" relative">
-            <img
-              className="mx-auto"
-              src="https://hagerty-media-prod.imgix.net/2020/11/Bugatti-Chiron-Pur-Sport-show-car-10-scaled.jpg?auto=format%2Ccompress&ixlib=php-3.3.0"
-              alt=""
+            <Image
+              src={data?.parshData?.parsheBgImage}
+              alt="parsh-bg"
+              width={1000}
+              height={1000}
               style={{ height: "100vh", width: "100%" }}
             />
             <div
@@ -334,9 +340,11 @@ const AboutPage = () => {
                     }
               }
             >
-              <img
-                src="https://i.pinimg.com/1200x/2c/c9/27/2cc92751cf614f73f162c784fdba07e9.jpg"
-                alt=""
+              <Image
+                src={data?.parshData?.parshImage}
+                alt="parshe image"
+                width={500}
+                height={500}
                 style={
                   singleParsh.lgParse
                     ? { borderRadius: "50%", transform: "scale(1.2)" }
@@ -363,18 +371,7 @@ const AboutPage = () => {
                     }
               }
             >
-              {/* <iframe
-                className="video-show"
-                src="https://www.youtube.com/embed/_0YXkCN4yJw"
-                title="BUGATTI CHIRON PUR SPORT"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe> */}
-              <video
-                controls
-                autoplay
-                src="https://player.vimeo.com/external/425782758.sd.mp4?s=7a8157cf3904119459a88ff96b2363f2fe7dd530&profile_id=164&oauth2_token_id=57447761"
-              ></video>
+              <video controls autoplay src={data?.parshData?.videoShow}></video>
             </div>
           </div>
         </div>
@@ -390,7 +387,7 @@ const AboutPage = () => {
               : "car-light-body "
           }
           style={{
-            backgroundImage: `url("https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")`,
+            backgroundImage: `url("${data?.lightingImage}")`,
           }}
         >
           <div className="relative w-full flex justify-center items-center h-full">
@@ -398,11 +395,14 @@ const AboutPage = () => {
               <h1 className=" font-mono font-semibold text-4xl text-center mb-8">
                 One Tap to Light It up
               </h1>
-              <img
+              <Image
                 style={{ width: "90% ", height: "350px" }}
-                src="https://images.unsplash.com/photo-1562141961-b5d1dfb57448?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                width={500}
+                height={500}
+                src={data?.lightingImage}
                 alt="light pic"
               />
+
               <div className="relative switch-btn-body text-center mt-5">
                 <div className="switch-btn-items">
                   <span>ON</span> <span className=" ml-6">OFF</span>

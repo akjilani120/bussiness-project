@@ -67,13 +67,17 @@
   transition: transform 500ms;   
   margin: 0 auto;
   transform: scale(0.3); 
+  height: 300px;
+  width: 300px;
 }
 
 .slick-slide.slick-active.slick-center.slick-current img , .slide-first-img
  {
-  transform: scale(1.2);  
+  width: 600px; 
+  height: 600px; 
   transition: transform 800ms; 
-
+  transform: scale(1.2); 
+  
 }
 .slick-dots li{
   margin: 0px 4px;

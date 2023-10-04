@@ -4,12 +4,12 @@ import { BsStarFill, BsFillHeartFill } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import Image from "next/image";
-import firstImage from "../../public/case-1.jpeg";
-import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
 import { useState } from "react";
+import Link from "next/link";
 const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
-  const { id, productShowImg, name, rating, offerPercentage, price } = data;
+  const { id, productShowImg, name, rating, offerPercentage, price, model } =
+    data;
 
   const [addColor, setAddColor] = useState(false);
   const handleColor = () => {
@@ -19,12 +19,6 @@ const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
     <div className="card" style={cardStyle}>
       <div className="card-img-body">
         <div className="">
-          {/* <Image
-            src={firstImage}
-            alt="Picture of the author"
-            width={331}
-            height={334}
-          /> */}
           <Image
             src={productShowImg[0]}
             alt="Picture of the author"
@@ -34,13 +28,6 @@ const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
           />
         </div>
         <div className="card-second-image">
-          {/* <Image
-            src={secondImage}
-            className="card-img2"
-            alt="Picture of the author"
-            width={331}
-            height={334}
-          /> */}
           <Image
             src={productShowImg[1]}
             className="card-img2"
@@ -51,15 +38,19 @@ const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
         </div>
         <div className="card-icons z-40">
           <BiShoppingBag className="inline  card-icon" />
-          <GrView className=" inline    card-icon" />
+
+          <Link href={`/${model}`}>
+            <GrView className=" inline    card-icon" />
+          </Link>
         </div>
-        <div className="card-offer">
-          {offerPercentage ? (
-            <span className="text-sm">{offerPercentage}</span>
-          ) : (
-            ""
-          )}
-        </div>
+
+        {offerPercentage != "" ? (
+          <div className="card-offer">
+            <span className="text-sm">{offerPercentage}</span>{" "}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className="flex justify-between mt-1 ">
