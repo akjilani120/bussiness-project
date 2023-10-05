@@ -1,18 +1,20 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import SimpleButton from "../Extra-method/SimpleButton";
+import Image from "next/image";
 const CommonSlider = ({
   imageStyle,
   titleStyle,
   slidesItems,
   slideDuration,
   sliderBodyStyle,
-  indicatorClassName,
+  slideAutoPlay,
 }) => {
   const indicators = (index) => <div className="indicator"></div>;
   return (
     <div style={sliderBodyStyle}>
       <Slide
+        autoplay={slideAutoPlay ? slideAutoPlay : false}
         arrows={false}
         indicators={indicators}
         duration={slideDuration ? slideDuration : 2000}
@@ -22,20 +24,20 @@ const CommonSlider = ({
             <div className="flex justify-center items-center py-4">
               {slidesItem?.image ? (
                 <div>
-                  <img
+                  <Image
                     src={slidesItem?.image}
                     style={imageStyle}
                     alt="slider image"
+                    width={200}
+                    height={200}
                   />
                 </div>
               ) : null}
-              {slidesItem?.headName && slidesItem?.headtitle ? (
+              {slidesItem?.name && slidesItem?.positionTitle ? (
                 <div>
-                  <h6 className="m-0 p-0 font-semibold">
-                    {slidesItem?.headName}
-                  </h6>
+                  <h6 className="m-0 p-0 font-semibold">{slidesItem?.name}</h6>
                   <p className="m-0 p-0 text-sm opacity-5">
-                    {slidesItem?.headtitle}
+                    {slidesItem?.positionTitle}
                   </p>
                 </div>
               ) : null}

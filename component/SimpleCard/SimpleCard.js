@@ -7,7 +7,7 @@ import Image from "next/image";
 import "../../app/moreStyleShit/simpleCard.css";
 import { useState } from "react";
 import Link from "next/link";
-const SimpleCard = ({ cardStyle, imageHight, imageWidth, data }) => {
+const SimpleCard = ({ cardStyle, data }) => {
   const { id, productShowImg, name, rating, offerPercentage, price, model } =
     data;
 

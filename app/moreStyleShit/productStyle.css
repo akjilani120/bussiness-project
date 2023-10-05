@@ -73,10 +73,10 @@
 
 .slick-slide.slick-active.slick-center.slick-current img , .slide-first-img
  {
-  width: 600px; 
-  height: 600px; 
+  width: 500px; 
+  height: 500px; 
   transition: transform 800ms; 
-  transform: scale(1.2); 
+  transform: scale(1); 
   
 }
 .slick-dots li{

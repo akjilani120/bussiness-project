@@ -8,13 +8,17 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiTimeLine } from "react-icons/ri";
 import CustomAccordion from "@/component/Accordion/Accordion";
 import CommonSlider from "@/component/CommonSlider/CommonSlider";
-import "./moreStyleShit/homepage.css";
+import zoomslideItems from "../productDatas/zoomslideData.json";
+import slidesItems from "../productDatas/slidesItems.json";
+import testomoniyaData from "../productDatas/testomoniyaData.json";
 import SimpleSmallCard from "@/component/SimpleCard/SimpleSmallCard";
 import NameplateCard from "@/component/NameplateCard/NameplateCard";
 import SimpleCard from "@/component/SimpleCard/SimpleCard";
 import CommonInput from "@/component/formComponent/CommonInput";
 import { useEffect, useState } from "react";
-
+import Link from "next/link";
+import "./moreStyleShit/homepage.css";
+import CommonLoading from "@/component/CommonLoading/CommonLoading";
 export async function getData() {
   const res = await fetch("datas.json");
 
@@ -44,30 +48,6 @@ const Home = () => {
   const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
     ssr: false,
   });
-  const zoomslideItems = [
-    {
-      image: "https://images7.alphacoders.com/117/thumbbig-1172131.webp",
-      littleDiscri: "My company has latest car",
-      offerBalance: "50% OFF",
-      title: "Summer Offer",
-      moreOFBtn: "About More",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1579508542697-bb18e7d9aeaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      littleDiscri: "The car has a special offer",
-      offerBalance: "60% OFF",
-      title: "Eid Offer",
-      moreOFBtn: "About More",
-    },
-    {
-      image: "https://images4.alphacoders.com/757/thumbbig-757610.webp",
-      littleDiscri: "The offer will have just 5 days",
-      offerBalance: "70% OFF",
-      title: "Winter Offer",
-      moreOFBtn: "About More",
-    },
-  ];
 
   const accordionItems = ["First items", "Second items", "Third items"];
   const titleStyle = {
@@ -80,61 +60,31 @@ const Home = () => {
     margin: "20px 0px",
   };
 
-  const slidesItems = [
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-      showMoreBtn: "View Sale",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-      showMoreBtn: "View Sale",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "",
-      headtitle: "",
-      title: "45%",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mollis orci tortor",
-    },
-  ];
-  const testomoniyaData = [
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "Jakir kha",
-      headtitle: "AK band Ceo",
-      description: "This is best ecommerce website",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "Jakir kha",
-      headtitle: "AK band Ceo",
-      description: "This is best ecommerce website",
-    },
-    {
-      image:
-        "https://m2.portotheme.com/media/wysiwyg/smartwave/porto/homepage/13/shop13_off.png",
-      headName: "Jakir kha",
-      headtitle: "AK band Ceo",
-      description: "This is best ecommerce website",
-    },
-  ];
-
+  // const testomoniyaData ;
+  const smallCardShow = (startSlice, endSlice, loading) => {
+    return (
+      <div className="">
+        {datas.length === 0 && loading == true ? (
+          <CommonLoading />
+        ) : (
+          datas.slice(startSlice, endSlice)?.map((data) => (
+            <div key={data.id} className="my-2">
+              <Link href={`/${data?.model}`}>
+                <SimpleSmallCard
+                  imageHight={100}
+                  imageWidth={100}
+                  data={data}
+                />
+              </Link>
+            </div>
+          ))
+        )}
+      </div>
+    );
+  };
+  const simpleAccordion = (title) => {
+    return <CustomAccordion accordionItems={accordionItems} title={title} />;
+  };
   return (
     <>
       <AnimatedCursor
@@ -173,7 +123,9 @@ const Home = () => {
         <div className="row">
           <div className="col-lg-9 col-md-12 col-12">
             <ZoomInSliderBanner
-              zoomslideItems={zoomslideItems}
+              zoomslideItems={
+                zoomslideItems.length == 0 ? <CommonLoading /> : zoomslideItems
+              }
               style={{ height: "500px" }}
               isIndicators={true}
             />
@@ -213,14 +165,17 @@ const Home = () => {
           <div className="col-12 col-md-9 col-lg-9">
             <div className="row">
               {datas.length === 0 ? (
-                <h1 className=" ml-5 font-bold my-2">Loading.......</h1>
+                <CommonLoading />
               ) : (
                 datas.slice(1, 10)?.map((data) => (
                   <div
                     key={data.id}
                     className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
                   >
-                    <SimpleCard data={data} />
+                    <Link href={`/${data?.model}`}>
+                      {" "}
+                      <SimpleCard data={data} />
+                    </Link>
                   </div>
                 ))
               )}
@@ -246,6 +201,7 @@ const Home = () => {
                       backgroundSize: "cover",
                       height: "100%",
                       width: "100%",
+                      borderRadius: "10px",
                     }}
                   >
                     <div>
@@ -262,61 +218,25 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="">
+            <div className="container-body">
               <div className="row">
                 <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
-                  <h2>Top Rated Products</h2>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
+                  <h2 className=" font-bold text-3xl mb-4">
+                    Top Rated Products
+                  </h2>
+                  {smallCardShow(1, 4, true)}
                 </div>
                 <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
-                  <h2>Top Rated Products</h2>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
+                  <h2 className=" font-bold text-3xl mb-4">
+                    Top Seller Products
+                  </h2>
+                  {smallCardShow(4, 7)}
                 </div>
                 <div className="col-8 mx-auto md:mx-0 col-sm-6 col-lg-4">
-                  <h2>Top Rated Products</h2>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
-                  <div className=" my-2">
-                    <SimpleSmallCard imageHight={100} imageWidth={100} />
-                  </div>
+                  <h2 className=" font-bold text-3xl mb-4">
+                    Top Lover Products
+                  </h2>
+                  {smallCardShow(8, 11)}
                 </div>
               </div>
             </div>
@@ -327,26 +247,11 @@ const Home = () => {
                 <h4 className=" ">BROWSE CATEGORIES</h4>
               </div>
               <div className="px-3">
-                <CustomAccordion
-                  accordionItems={accordionItems}
-                  title={"My items"}
-                />
-                <CustomAccordion
-                  accordionItems={accordionItems}
-                  title={"My items"}
-                />
-                <CustomAccordion
-                  accordionItems={accordionItems}
-                  title={"My items"}
-                />
-                <CustomAccordion
-                  accordionItems={accordionItems}
-                  title={"My items"}
-                />
-                <CustomAccordion
-                  accordionItems={accordionItems}
-                  title={"My items"}
-                />
+                {simpleAccordion("BMW  car Items")}
+                {simpleAccordion("Rolls Royal car Items")}
+                {simpleAccordion("LamborGini car Items")}
+                {simpleAccordion("Range Rover car Items")}
+                {simpleAccordion("Tata car  Items")}
               </div>
             </div>
             <div className="p-5 mt-6" style={{ border: "1px solid silver" }}>
@@ -389,7 +294,13 @@ const Home = () => {
             </div>
             <section className="p-5 mt-6" style={{ border: "3px solid red" }}>
               <CommonSlider
-                slidesItems={testomoniyaData}
+                slidesItems={
+                  testomoniyaData.length == 0 ? (
+                    <CommonLoading />
+                  ) : (
+                    testomoniyaData
+                  )
+                }
                 titleStyle={titleStyle}
                 imageStyle={{
                   height: "70px",
@@ -406,14 +317,5 @@ const Home = () => {
     </>
   );
 };
-export async function getStaticProps() {
-  const res = await fetch("datas.json");
-  const data = await res.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
-}
 export default Home;

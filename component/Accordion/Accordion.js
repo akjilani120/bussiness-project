@@ -4,9 +4,7 @@ import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 import "./accordion.css";
 const CustomAccordion = ({ accordionItems, title }) => {
   const [addstyle, setAddStyle] = useState(false);
-  const handleAccordin = () => {
-    setAddStyle(!addstyle);
-  };
+
   return (
     <div className="accordion-container" onClick={() => setAddStyle(!addstyle)}>
       {title ? (

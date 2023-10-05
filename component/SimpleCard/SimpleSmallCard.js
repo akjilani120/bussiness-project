@@ -1,39 +1,29 @@
 "use client";
 import StarRatingComponent from "react-star-rating-component";
-import { BsStarFill, BsFillHeartFill } from "react-icons/bs";
-import { BiShoppingBag } from "react-icons/bi";
-import { GrView } from "react-icons/gr";
+import { BsStarFill } from "react-icons/bs";
+
 import Image from "next/image";
 import firstImage from "../../public/case-1.jpeg";
 import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
-import { useState } from "react";
-const SimpleSmallCard = ({
-  images,
-  offerPercentage,
-  productName,
-  ratingPoint,
-  offerCutBalance,
-  mainBalance,
-
-  imageHight,
-  imageWidth,
-  loveReact,
-}) => {
+const SimpleSmallCard = ({ data, imageHight, imageWidth }) => {
+  const { id, productShowImg, name, rating, offerPercentage, price, model } =
+    data;
   return (
     <div className="row">
       <div className="card-img-body col-5">
         <Image
-          src={firstImage}
+          src={productShowImg[2]}
           alt="Picture of the author"
           width={imageWidth}
           height={imageHight}
+          className="small-card-image1"
         />
 
-        <div className="card-second-image">
+        <div className="card-second-image ">
           <Image
-            src={secondImage}
-            className="card-img2"
+            src={productShowImg[3]}
+            className="card-img2 small-card-image2"
             alt="Picture of the author"
             width={imageWidth}
             height={imageHight}
@@ -42,14 +32,14 @@ const SimpleSmallCard = ({
       </div>
 
       <div className="col-7">
-        <p className=" opacity-40">Women Red bag</p>
+        <p className=" opacity-40">{name}</p>
 
         <StarRatingComponent
           name="rate2"
           editing={false}
           renderStarIcon={() => <BsStarFill />}
           starCount={5}
-          value={3}
+          value={rating}
         />
 
         <p className="opacity-40">$250</p>

@@ -64,3 +64,11 @@ transition: 2s;
 .card-icon:hover{
     background-color: red;    
 }
+.small-card-image1{
+    width: 100px;
+    height: 100px;
+}
+.small-card-image2{
+    width: 100px;
+    height: 100px;
+}
