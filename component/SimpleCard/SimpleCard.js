@@ -8,8 +8,16 @@ import "../../app/moreStyleShit/simpleCard.css";
 import { useState } from "react";
 import Link from "next/link";
 const SimpleCard = ({ cardStyle, data }) => {
-  const { id, productShowImg, name, rating, offerPercentage, price, model } =
-    data;
+  const {
+    id,
+    productShowImg,
+    name,
+    rating,
+    offerPercentage,
+    price,
+    model,
+    quantity,
+  } = data;
 
   const [addColor, setAddColor] = useState(false);
   const handleColor = () => {
@@ -47,6 +55,10 @@ const SimpleCard = ({ cardStyle, data }) => {
         {offerPercentage != "" ? (
           <div className="card-offer">
             <span className="text-sm">{offerPercentage}</span>{" "}
+          </div>
+        ) : quantity == 0 ? (
+          <div className="card-offer">
+            <span className="text-sm">SOLDOUT</span>{" "}
           </div>
         ) : (
           ""

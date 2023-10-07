@@ -12,6 +12,43 @@ function NavBar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+  const navItems = [
+    {
+      path: "/",
+      title: "Home",
+    },
+    {
+      path: "/product",
+      title: "Products",
+    },
+
+    {
+      path: "/about",
+      title: "About",
+    },
+    {
+      path: "",
+      title: "contact",
+    },
+    {
+      path: "/accout/login",
+      title: <BiSolidUser activeClassName="active" className="navbar-icons" />,
+    },
+    {
+      path: "",
+      title: <FiSearch activeClassName="active" className="navbar-icons" />,
+    },
+    {
+      path: "",
+      title: <BiHeart activeClassName="active" className="navbar-icons" />,
+    },
+    {
+      path: "",
+      title: (
+        <CiShoppingCart activeClassName="active" className="navbar-icons" />
+      ),
+    },
+  ];
   return (
     <>
       <nav className="navbar">
@@ -21,81 +58,18 @@ function NavBar() {
           </Link>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link
-                href="/"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                href="/about"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                href="/common"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                href=""
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="" className="nav-links " onClick={handleClick}>
-                <FiSearch activeClassName="active" className="navbar-icons" />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-links "
-                href="/accout/login"
-                onClick={handleClick}
-              >
-                <BiSolidUser
+            {navItems?.map((item, index) => (
+              <li key={index} className="nav-item">
+                <Link
+                  href={item?.path}
                   activeClassName="active"
-                  className="navbar-icons"
-                />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="" className="nav-links " onClick={handleClick}>
-                <BiHeart activeClassName="active" className="navbar-icons" />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                href=""
-                activeClassName="active"
-                className="nav-links "
-                onClick={handleClick}
-              >
-                <CiShoppingCart
-                  activeClassName="active"
-                  className="navbar-icons"
-                />
-              </Link>
-            </li>
+                  className="nav-links"
+                  onClick={handleClick}
+                >
+                  {item?.title}
+                </Link>
+              </li>
+            ))}
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             {click ? (
