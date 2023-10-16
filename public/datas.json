@@ -31,7 +31,8 @@
         "rating" : 3,
         "lightingImage":"https://images.unsplash.com/photo-1617718983914-e901af86531c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "offerPercentage":"41%",
-        "quantity":10
+        "quantity":10,
+        "sellDetail":"j20selldetails"
         
     },
     {
@@ -65,7 +66,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1617718983914-e901af86531c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "offerPercentage":"",
-        "quantity":5
+        "quantity":5,
+        "sellDetail":"j50selldetails"
         
     },
     {
@@ -86,7 +88,7 @@
         },
         "brand" :"BMW",
         "name" : "BMW 5 Series",
-        "model":"H20",
+        "model":"h20",
         "version":"V3",
         "description" : "The BMW 5 Series Sedan line of vehicle features only the best in the iconic BMW looks. Built to perform with its aerodynamic curves, the car’s interior is also apt to impress: Nappa leather brings about an exquisite taste that only the finest of motorists are to appreciate.",
         "topSpeed" : "250 km/h (155 mph)",
@@ -100,7 +102,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "offerPercentage":"50%",
-        "quantity":6
+        "quantity":6,
+        "sellDetail":"h20selldetails"
         
     },
     {
@@ -137,7 +140,8 @@
         "rating" : 5,
         "lightingImage":"https://images.unsplash.com/photo-1617718983914-e901af86531c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "offerPercentage":"",
-        "quantity":50
+        "quantity":50,
+        "sellDetail":"k2selldetails"
         
     },
     {
@@ -174,7 +178,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1617718983914-e901af86531c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
         "offerPercentage":"",
-        "quantity":10
+        "quantity":10,
+        "sellDetail":"j7selldetails"
         
     },
     {
@@ -208,7 +213,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1604054094723-3a949e4a8993?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZ2UlMjByb3ZlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=60",
         "offerPercentage":"50%",
-        "quantity":15
+        "quantity":15,
+        "sellDetail":"RR20selldetails"
         
     },
     {
@@ -242,7 +248,8 @@
         "rating" : 5,
         "lightingImage":"https://images.unsplash.com/photo-1632441730372-d8509de481d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZlcnJhcml8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60",
         "offerPercentage":"",
-        "quantity":10
+        "quantity":10,
+        "sellDetail":"F40selldetails"
         
     },
     {
@@ -276,7 +283,8 @@
         "rating" : 5,
         "lightingImage":"https://images.unsplash.com/photo-1594420307680-4e404e105d86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fG1lcmNlZGVzJTIwYmVuenxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1400&q=60",
         "offerPercentage":"10%",
-        "quantity":8
+        "quantity":8,
+        "sellDetail":"benz20selldetails"
         
     },
     {
@@ -310,7 +318,8 @@
         "rating" : 3,
         "lightingImage":"https://images.unsplash.com/photo-1549458395-e14f2e6d39c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFtYm9yZ2hpbmklMjB1cnVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&q=60",
         "offerPercentage":"50%",
-        "quantity":5
+        "quantity":5,
+        "sellDetail":"Us50selldetails"
         
     },
     {
@@ -344,7 +353,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1536150794560-43f988aec18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGF1ZGklMjBhNHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1400&q=60",
         "offerPercentage":"",
-        "quantity":0
+        "quantity":0,
+        "sellDetail":"A4selldetails"
         
     },
     {
@@ -378,7 +388,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1583668925503-7fcc6606934c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGJtdyUyMDd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60",
         "offerPercentage":"30%",
-        "quantity":8
+        "quantity":8,
+        "sellDetail":"Series8selldetails"
         
     },
     {
@@ -412,7 +423,8 @@
         "rating" : 5,
         "lightingImage":"https://images.unsplash.com/photo-1647200527435-cc6b0e91e120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHJvbGxzJTIwcm95Y2UlMjBnaG9zdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60",
         "offerPercentage":"",
-        "quantity":0
+        "quantity":0,
+        "sellDetail":"ghostj4selldetails"
         
     },
     {
@@ -446,7 +458,8 @@
         "rating" : 3,
         "lightingImage":"https://images.unsplash.com/photo-1620891507099-170ea1456fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHRlc2xhfGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=60",
         "offerPercentage":"20%",
-        "quantity":15
+        "quantity":15,
+        "sellDetail":"model3selldetails"
         
     },
     {
@@ -482,7 +495,8 @@
         "rating" : 4,
         "lightingImage":"https://images.unsplash.com/photo-1634737581963-5a22ba471961?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGhvbmRhJTIwY2Fyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1400&q=80",
         "offerPercentage":"",
-        "quantity":0
+        "quantity":0,
+        "sellDetail":"WR-Vselldetails"
         
     },
     {
@@ -516,7 +530,8 @@
         "rating" : 2,
         "lightingImage":"https://images.unsplash.com/photo-1633711507230-f6554ef4d9fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHRhdGElMjBjYXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=400&q=60",
         "offerPercentage":"50%",
-        "quantity":10
+        "quantity":10,
+        "sellDetail":"Harriarselldetails"
         
     }
 ]

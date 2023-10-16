@@ -87,7 +87,7 @@ const Home = () => {
   };
   return (
     <>
-      <AnimatedCursor
+      {/* <AnimatedCursor
         innerSize={8}
         outerSize={8}
         color="0,0,0"
@@ -117,7 +117,7 @@ const Home = () => {
             },
           },
         ]}
-      />
+      /> */}
 
       <section className="container-body my-4">
         <div className="row">

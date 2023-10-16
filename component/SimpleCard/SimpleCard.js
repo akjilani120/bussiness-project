@@ -17,6 +17,7 @@ const SimpleCard = ({ cardStyle, data }) => {
     price,
     model,
     quantity,
+    sellDetail,
   } = data;
 
   const [addColor, setAddColor] = useState(false);
@@ -45,8 +46,9 @@ const SimpleCard = ({ cardStyle, data }) => {
           />
         </div>
         <div className="card-icons z-40">
-          <BiShoppingBag className="inline  card-icon" />
-
+          <Link href={`/${model}/${sellDetail}`}>
+            <BiShoppingBag className="inline  card-icon" />
+          </Link>
           <Link href={`/${model}`}>
             <GrView className=" inline    card-icon" />
           </Link>
@@ -67,7 +69,7 @@ const SimpleCard = ({ cardStyle, data }) => {
 
       <div className="flex justify-between mt-1 ">
         <div className="">
-          {name ? <p className=" opacity-40">{name}</p> : ""}
+          {name ? <p className=" opacity-90">{name}</p> : ""}
 
           <StarRatingComponent
             name="rate2"
@@ -77,7 +79,7 @@ const SimpleCard = ({ cardStyle, data }) => {
             value={rating}
           />
 
-          <p className="opacity-40">${price}</p>
+          <p className="opacity-90">${price}</p>
         </div>
         <div>
           <BsFillHeartFill

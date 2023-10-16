@@ -1,0 +1,12 @@
+.mag-image{
+   z-index: 990; 
+}
+.mag-image img{
+    height: 400px !important ;
+}
+
+.sell-slide-image{
+    width: 100px;
+    height: 80px;
+    cursor: pointer;
+}
