@@ -10,6 +10,9 @@ import { BsStarFill } from "react-icons/bs";
 import SimpleSmallImages from "@/component/SmallImages/SimpleSmallImages";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import SimpleModal from "@/component/SimpleModal/SimpleModal";
+import CommonLoading from "@/component/CommonLoading/CommonLoading";
+import Link from "next/link";
+import SimpleCard from "@/component/SimpleCard/SimpleCard";
 const SellDetails = ({ params }) => {
   let data;
   if (params.sellDetail != "" && datas.length != 0) {
@@ -29,10 +32,13 @@ const SellDetails = ({ params }) => {
   const containerStyle = {
     justifyContent: "start",
   };
+  const randomNumber = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+  const randomNumber2 = Math.floor(Math.random() * (6 - 2 + 2)) + 2;
 
   return (
     <div>
       <ShowStillPageName pageTitle={data?.name} />
+
       <section className="container-body my-5">
         <div className="row">
           <div className=" col-md-6 col-8">
@@ -139,6 +145,63 @@ const SellDetails = ({ params }) => {
               />
             </div>
           </div>
+        </div>
+      </section>
+      <hr />
+      <section className="container-body">
+        <div className="row">
+          <div className="col-12">
+            <h1 className="my-5 font-semibold text-4xl">Description</h1>
+            <hr />
+            <p className="my-2">
+              <b>Company Name : </b> {data?.brand}
+            </p>
+            <p className="my-2">
+              <b>Little Description : </b> {data?.description}
+            </p>
+            <p className="my-2">
+              <b> Top speed of car : </b> {data?.topSpeed}
+            </p>
+            <p className="my-2">
+              <b> Production of car : </b> {data?.production}
+            </p>
+            <p className="my-2">
+              <b> Class Type of car : </b> {data?.classType}
+            </p>
+            <p className="my-2">
+              <b> Body style of car : </b> {data?.bodyStyle}
+            </p>
+            <p className="my-2">
+              <b> Car Length : </b> {data?.length}
+            </p>
+            <p className="my-2">
+              <b> Car Width : </b> {data?.carWidth}
+            </p>
+            <p className="my-2">
+              <b> Car Hieght : </b> {data?.carHeight}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="container-body">
+        <div className="row">
+          <div className="col-12">
+            <h1 className=" text-4xl font-semibold my-5 text-center">
+              Related Car
+            </h1>
+          </div>
+          {datas.length === 0 ? (
+            <CommonLoading />
+          ) : (
+            datas.slice(randomNumber, randomNumber2)?.map((data) => (
+              <div
+                key={data.id}
+                className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
+              >
+                <SimpleCard data={data} />
+              </div>
+            ))
+          )}
         </div>
       </section>
     </div>

@@ -4,3 +4,7 @@
         margin: 0px auto !important;
     }
 }
+.modal-box {
+    background-color: beige;
+    padding: 25px !important;
+}

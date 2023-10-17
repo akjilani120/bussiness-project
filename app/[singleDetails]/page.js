@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "../moreStyleShit/productStyle.css";
-
 import Image from "next/image";
 import Slider from "react-slick";
 import SimpleButton from "@/component/Extra-method/SimpleButton";
 import SimpleProgress from "@/component/SimpleProgress/SimpleProgress";
 import SimpleParcentNumber from "@/component/SimpleParcentNumber/SimpleParcentNumber";
 import datas from "../../productDatas/datas.json";
+import "../moreStyleShit/productStyle.css";
+import Link from "next/link";
 
 const AboutPage = ({ params }) => {
   let data;
@@ -40,8 +40,10 @@ const AboutPage = ({ params }) => {
     lgLightOpa: false,
     smlLightOpa: false,
   });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const screnWidth = window.innerWidth;
+  const screnHieght = window.innerWidth;
+  const [screenWidth, setScreenWidth] = useState(screnWidth);
+  const [screenHeight, setScreenHeight] = useState(screnHieght);
   const handleSmallNav = () => {
     if (window.scrollY >= 170) {
       setSmallNav(true);
@@ -191,15 +193,17 @@ const AboutPage = ({ params }) => {
                   Overview
                 </p>
                 <div className="  lg:ml-20 md:ml-5 ml-4">
-                  <SimpleButton
-                    title={"Buy now"}
-                    style={{
-                      padding: "8px 10px",
-                      fontSize: "14px",
-                      fontWeight: "600",
-                      borderRadius: "40px",
-                    }}
-                  />
+                  <Link href={`/${data?.model}/${data?.sellDetail}`}>
+                    <SimpleButton
+                      title={"Buy now"}
+                      style={{
+                        padding: "8px 10px",
+                        fontSize: "14px",
+                        fontWeight: "600",
+                        borderRadius: "40px",
+                      }}
+                    />
+                  </Link>
                 </div>
               </div>
             </div>

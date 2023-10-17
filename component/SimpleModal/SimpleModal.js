@@ -2,7 +2,9 @@ import Image from "next/image";
 import React from "react";
 import SimpleAnotherButton from "../Extra-method/SimpleAnotherButton";
 import SimpleCheckInput from "../formComponent/SimpleCheckInput";
+import { CgCloseO } from "react-icons/cg";
 import "./simpleModalstyle.css";
+import Link from "next/link";
 const SimpleModal = ({
   modalName,
   modalStyle,
@@ -23,9 +25,9 @@ const SimpleModal = ({
       </button>
       <dialog
         id="my_modal"
-        className="modal modal-bottom sm:modal-middle mx-auto md:w-2/4"
+        className="modal modal-bottom sm:modal-middle mx-auto "
       >
-        <div className="modal-box">
+        <div className="modal-box relative">
           <div className="container-body">
             <div className="row">
               <div className="col-6">
@@ -52,10 +54,12 @@ const SimpleModal = ({
                   />
                 </div>
                 <div>
-                  <SimpleAnotherButton
-                    className=" w-full"
-                    btnName={"View Card"}
-                  />
+                  <Link href={"/k2/k2selldetails"}>
+                    <SimpleAnotherButton
+                      className=" w-full"
+                      btnName={"View Card"}
+                    />
+                  </Link>
                 </div>
                 <div className="mt-2">
                   <SimpleCheckInput
@@ -76,75 +80,19 @@ const SimpleModal = ({
               </div>
             </div>
           </div>
-          <div className="modal-action">
+          <div
+            className="modal-action absolute"
+            style={{ top: "-20px", right: "-15px" }}
+          >
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
+              <button className="btn bg-white" style={{ borderRadius: "15px" }}>
+                {" "}
+                <CgCloseO className="text-3xl text-red-700" />
+              </button>
             </form>
           </div>
         </div>
       </dialog>
-      {/* <label
-        htmlFor="my-modal"
-        className={`${modalClassName} border border-black px-3 py-2  block text-center cursor-pointer bg-black text-white`}
-        style={{ ...modalStyle }}
-      >
-        {modalName}
-      </label> */}
-      {/* <input type="checkbox" id="my-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <div className="container-body">
-            <div className="row">
-              <div className="col-6">
-                <Image
-                  style={{ width: "100%", height: "250px" }}
-                  src={productImage}
-                  width={200}
-                  height={200}
-                  alt="modal image"
-                />
-                <p className=" mt-3">{productName}</p>
-              </div>
-              <div className="col-6">
-                <p>
-                  There are <b>{productQuantity}</b> items in your card
-                </p>
-                <p className=" text-lg font-semibold">
-                  Total Price : {productTotalPrice}
-                </p>
-                <div className="my-4">
-                  <SimpleAnotherButton
-                    className=" w-full"
-                    btnName={"Contiue Shipping"}
-                  />
-                </div>
-                <div>
-                  <SimpleAnotherButton
-                    className=" w-full"
-                    btnName={"View Card"}
-                  />
-                </div>
-                <div className="my-1">
-                  <SimpleCheckInput
-                    type="checkbox"
-                    checkboxTitle="I agree with the terms and conditions"
-                  />
-                </div>
-                <SimpleAnotherButton
-                  className=" bg-fuchsia-700 border-none w-full"
-                  btnName={"Check Out"}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="modal-action">
-            <label htmlFor="my-modal" className="btn">
-              Close!
-            </label>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };
