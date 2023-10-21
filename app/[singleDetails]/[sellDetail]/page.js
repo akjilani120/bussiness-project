@@ -13,6 +13,7 @@ import SimpleModal from "@/component/SimpleModal/SimpleModal";
 import CommonLoading from "@/component/CommonLoading/CommonLoading";
 import Link from "next/link";
 import SimpleCard from "@/component/SimpleCard/SimpleCard";
+import SimpleAnotherButton from "@/component/Extra-method/SimpleAnotherButton";
 const SellDetails = ({ params }) => {
   let data;
   if (params.sellDetail != "" && datas.length != 0) {
@@ -22,6 +23,7 @@ const SellDetails = ({ params }) => {
       }
     });
   }
+
   const [showImage, setShowImage] = useState(data?.productShowImg[0]);
   const [quantity, setQuantity] = useState(1);
   const colorImageStyle = {
@@ -32,13 +34,19 @@ const SellDetails = ({ params }) => {
   const containerStyle = {
     justifyContent: "start",
   };
-  const randomNumber = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-  const randomNumber2 = Math.floor(Math.random() * (6 - 2 + 2)) + 2;
+  const randomNumber = Math.floor(Math.random() * 4) + 1;
 
+  const showDescrib = (descriTitle, descriName) => {
+    return (
+      <p className="my-2">
+        <b>{descriTitle} : </b> {descriName}
+      </p>
+    );
+  };
+  const totalPrice = quantity * data?.price;
   return (
     <div>
       <ShowStillPageName pageTitle={data?.name} />
-
       <section className="container-body my-5">
         <div className="row">
           <div className=" col-md-6 col-8">
@@ -135,14 +143,37 @@ const SellDetails = ({ params }) => {
                 </button>
               </div>
             </div>
-            <div className=" my-7 w-2/4 ">
+            <div className=" my-7 lg:w-2/4 ">
               <SimpleModal
                 modalName={"Add To cart"}
                 productQuantity={quantity}
                 productImage={showImage}
                 productName={data?.name}
-                productTotalPrice={quantity * data?.price}
+                productTotalPrice={totalPrice}
               />
+            </div>
+            <div className="  w-3/4 mx-auto">
+              <Link
+                href={{
+                  pathname: `/${data?.model}/${data?.sellDetail}/${data?.id}`,
+                  query: {
+                    productName: data?.name,
+                    productQuantity: quantity,
+                    productImg: showImage,
+                    productPrice: totalPrice,
+                  },
+                }}
+              >
+                <SimpleAnotherButton
+                  style={{
+                    backgroundColor: "#ecd265",
+                    color: "white",
+                    borderRadius: "5px",
+                    border: "none",
+                  }}
+                  btnName={"Buy Now"}
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -153,33 +184,15 @@ const SellDetails = ({ params }) => {
           <div className="col-12">
             <h1 className="my-5 font-semibold text-4xl">Description</h1>
             <hr />
-            <p className="my-2">
-              <b>Company Name : </b> {data?.brand}
-            </p>
-            <p className="my-2">
-              <b>Little Description : </b> {data?.description}
-            </p>
-            <p className="my-2">
-              <b> Top speed of car : </b> {data?.topSpeed}
-            </p>
-            <p className="my-2">
-              <b> Production of car : </b> {data?.production}
-            </p>
-            <p className="my-2">
-              <b> Class Type of car : </b> {data?.classType}
-            </p>
-            <p className="my-2">
-              <b> Body style of car : </b> {data?.bodyStyle}
-            </p>
-            <p className="my-2">
-              <b> Car Length : </b> {data?.length}
-            </p>
-            <p className="my-2">
-              <b> Car Width : </b> {data?.carWidth}
-            </p>
-            <p className="my-2">
-              <b> Car Hieght : </b> {data?.carHeight}
-            </p>
+            {showDescrib("Company Name", data?.brand)}
+            {showDescrib("Little Description", data?.description)}
+            {showDescrib("Top speed of car ", data?.topSpeed)}
+            {showDescrib("Production of car ", data?.production)}
+            {showDescrib("Class Type of car ", data?.classType)}
+            {showDescrib("Body style of car ", data?.bodyStyle)}
+            {showDescrib("Car Length ", data?.length)}
+            {showDescrib(" Car Width ", data?.carWidth)}
+            {showDescrib(" Car Hight ", data?.carHeight)}
           </div>
         </div>
       </section>
@@ -190,14 +203,13 @@ const SellDetails = ({ params }) => {
               Related Car
             </h1>
           </div>
+
           {datas.length === 0 ? (
             <CommonLoading />
           ) : (
-            datas.slice(randomNumber, randomNumber2)?.map((data) => (
-              <div
-                key={data.id}
-                className="col-10 col-md-6 col-lg-4 mx-auto md:mx-0 my-4"
-              >
+            datas?.slice(1, 5)?.map((data) => (
+              <div className="col-6 col-md-3 col-lg-4" key={data.id}>
+                {" "}
                 <SimpleCard data={data} />
               </div>
             ))

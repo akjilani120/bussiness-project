@@ -1,6 +1,13 @@
 import React from "react";
 
-const SimpleCheckInput = ({ onClick, onChange, name, id, checkboxTitle }) => {
+const SimpleCheckInput = ({
+  onClick,
+  onChange,
+  name,
+  id,
+  checkboxTitle,
+  required,
+}) => {
   return (
     <div>
       <label>
@@ -10,6 +17,7 @@ const SimpleCheckInput = ({ onClick, onChange, name, id, checkboxTitle }) => {
           type="checkbox"
           name={name}
           id={id}
+          required={required}
         />
         <span> {checkboxTitle}</span>
       </label>

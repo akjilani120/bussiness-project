@@ -87,38 +87,6 @@ const Home = () => {
   };
   return (
     <>
-      {/* <AnimatedCursor
-        innerSize={8}
-        outerSize={8}
-        color="0,0,0"
-        outerAlpha={0.3}
-        innerScale={0.7}
-        outerScale={5}
-        clickables={[
-          "a",
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-          "span",
-          ".link",
-          "p",
-          {
-            target: ".custom",
-            options: {
-              innerSize: 12,
-              outerSize: 12,
-              color: "0,0,0",
-              outerAlpha: 0.6,
-              innerScale: 0.6,
-              outerScale: 5,
-            },
-          },
-        ]}
-      /> */}
-
       <section className="container-body my-4">
         <div className="row">
           <div className="col-lg-9 col-md-12 col-12">

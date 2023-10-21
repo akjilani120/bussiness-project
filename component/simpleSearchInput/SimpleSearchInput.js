@@ -20,7 +20,7 @@ const SimpleSearchInput = ({ searchValue, setSearchValue }) => {
         style={{
           top: "0",
           right: "-35px",
-          height: "42px",
+          height: "44px",
           borderRadius: "0px 5px 5px 0px ",
         }}
       >

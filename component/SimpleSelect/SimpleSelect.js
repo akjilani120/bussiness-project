@@ -1,23 +1,19 @@
 import React from "react";
 
-const SimpleSelect = ({
-  options,
-  selectedValue,
-  setSelectedValue,
-  selectTitle,
-}) => {
-  const handleSelectChange = (e) => {
-    setSelectedValue(e.target.value);
-  };
+const SimpleSelect = ({ options, selectTitle, style, required, onChange }) => {
   return (
     <div>
-      {selectTitle ? <label>{selectTitle}</label> : null}
-      {/* <label>Select an option:</label> */}
+      {selectTitle ? <label>{selectTitle} : </label> : null}
       <select
-        style={{ borderRadius: "8px" }}
-        value={selectedValue}
-        onChange={handleSelectChange}
+        style={{
+          ...style,
+          borderRadius: "8px",
+          border: "1px solid black",
+          padding: "5px",
+        }}
+        onChange={onChange}
         className={selectTitle ? " ml-3" : "ml-0"}
+        required={required}
       >
         <option value="">Select an option</option>
         {options.map((option) => (

@@ -46,9 +46,12 @@ const SimpleCard = ({ cardStyle, data }) => {
           />
         </div>
         <div className="card-icons z-40">
-          <Link href={`/${model}/${sellDetail}`}>
-            <BiShoppingBag className="inline  card-icon" />
-          </Link>
+          {quantity == 0 ? null : (
+            <Link href={`/${model}/${sellDetail}`}>
+              <BiShoppingBag className="inline  card-icon" />
+            </Link>
+          )}
+
           <Link href={`/${model}`}>
             <GrView className=" inline    card-icon" />
           </Link>

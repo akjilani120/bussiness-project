@@ -32,7 +32,7 @@ const SimpleSmallCard = ({ data, imageHight, imageWidth }) => {
       </div>
 
       <div className="col-7">
-        <p className=" opacity-40">{name}</p>
+        <p className=" opacity-70">{name}</p>
 
         <StarRatingComponent
           name="rate2"
@@ -42,7 +42,7 @@ const SimpleSmallCard = ({ data, imageHight, imageWidth }) => {
           value={rating}
         />
 
-        <p className="opacity-40">$250</p>
+        <p className="opacity-70">$250</p>
       </div>
     </div>
   );

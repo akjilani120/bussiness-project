@@ -20,6 +20,7 @@ const CommonInput = ({
   minTime,
   maxTime,
   style = {},
+  readOnly,
 }) => {
   return (
     <div className={bodyClass}>

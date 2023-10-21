@@ -34,7 +34,9 @@ const Products = () => {
     };
     cashData();
   }, []);
-
+  const handleSelectChange = (e) => {
+    setSelectValue(e.target.value);
+  };
   return (
     <>
       <ShowStillPageName pageTitle={"Products"} />
@@ -51,10 +53,9 @@ const Products = () => {
               </div>
               <div className="name-search ml-5 mt-3">
                 <SimpleSelect
-                  selectTitle={"Search by name of company : "}
+                  selectTitle={"Search by name of company  "}
                   options={options}
-                  selectedValue={selectValue}
-                  setSelectedValue={setSelectValue}
+                  onChange={handleSelectChange}
                 />
               </div>
             </div>
