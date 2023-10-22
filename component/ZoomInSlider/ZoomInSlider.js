@@ -34,7 +34,7 @@ const ZoomInSliderBanner = ({
                 {item?.littleDiscri ? (
                   <p
                     style={{
-                      color: " rgba(255, 255, 255, 0.7)",
+                      color: "white",
                       fontWeight: "500",
                     }}
                   >
@@ -42,10 +42,15 @@ const ZoomInSliderBanner = ({
                   </p>
                 ) : null}
                 {item?.title ? (
-                  <h1 className="zoomslide-title m-0 p-0">{item?.title}</h1>
+                  <h1 className="zoomslide-title m-0 p-0 text-white">
+                    {item?.title}
+                  </h1>
                 ) : null}
                 {item?.offerBalance ? (
-                  <h2 className=" p-0 text-white zoomslide-offer">
+                  <h2
+                    className=" p-0  zoomslide-offer"
+                    style={{ color: "#3383FF" }}
+                  >
                     {item?.offerBalance}
                   </h2>
                 ) : null}

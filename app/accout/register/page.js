@@ -41,7 +41,7 @@ const Register = () => {
   };
   return (
     <div className="flex justify-center items-center px-10 py-5 bg-gray-100">
-      <div className="write w-2/5 px-4 flex justify-center bg-white">
+      <div className="write w-3/4 lg:w-2/4 px-4 flex justify-center bg-white">
         <div className="sign w-full">
           <h1 className=" text-center  text-xl" style={{ margin: "16px 0px" }}>
             Sign Up
@@ -188,14 +188,6 @@ const Register = () => {
             </span>
           </div>
         </div>
-      </div>
-      <div className=" bg-sky-300 h-full w-2/4">
-        <Image
-          className=""
-          style={{ height: "620px" }}
-          src={registeImag}
-          alt="register image"
-        />
       </div>
     </div>
   );

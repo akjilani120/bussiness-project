@@ -60,7 +60,6 @@ const Home = () => {
     margin: "20px 0px",
   };
 
-  // const testomoniyaData ;
   const smallCardShow = (startSlice, endSlice, loading) => {
     return (
       <div className="">

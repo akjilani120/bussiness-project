@@ -1,14 +1,10 @@
 "use client";
 import StarRatingComponent from "react-star-rating-component";
 import { BsStarFill } from "react-icons/bs";
-
 import Image from "next/image";
-import firstImage from "../../public/case-1.jpeg";
-import secondImage from "../../public/case-2.jpeg";
 import "../../app/moreStyleShit/simpleCard.css";
 const SimpleSmallCard = ({ data, imageHight, imageWidth }) => {
-  const { id, productShowImg, name, rating, offerPercentage, price, model } =
-    data;
+  const { id, productShowImg, name, rating } = data;
   return (
     <div className="row">
       <div className="card-img-body col-5">

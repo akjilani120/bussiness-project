@@ -18,7 +18,7 @@ const Login = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("inputValue", inputValues);
+
     setInputValues("");
   };
   return (
@@ -26,7 +26,7 @@ const Login = () => {
       className="flex justify-center items-center px-10 py-10 bg-gray-100 "
       style={{ height: "100vh" }}
     >
-      <div className=" w-2/5 px-4 flex justify-center bg-white">
+      <div className=" w-3/4 lg:w-2/4 px-4 flex justify-center bg-white pb-4">
         <div className="sign w-full">
           <h1 className=" text-center text-xl" style={{ margin: "16px 0px" }}>
             Login
@@ -149,13 +149,6 @@ const Login = () => {
             </span>
           </div>
         </div>
-      </div>
-      <div className=" w-2/4 bg-red-300 ">
-        <Image
-          style={{ height: "482px" }}
-          src={registeImag}
-          alt="register image"
-        />
       </div>
     </div>
   );

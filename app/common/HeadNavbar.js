@@ -35,7 +35,7 @@ function NavBar() {
       title: <BiSolidUser activeClassName="active" className="navbar-icons" />,
     },
     {
-      path: "",
+      path: "/product",
       title: <FiSearch activeClassName="active" className="navbar-icons" />,
     },
     {

@@ -53,8 +53,7 @@ border-radius: 50%;
   
 }
 /* =============Zoom slider style Start============= */
-.zoomslide-title{
-  font-family: 'Courier New', Courier, monospace;
+.zoomslide-title{  
   font-weight: 600;
   font-size: 43px;       
   color: white;

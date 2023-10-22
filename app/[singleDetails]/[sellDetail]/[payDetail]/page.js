@@ -15,7 +15,43 @@ const PayDetails = () => {
   const productQuantity = searchParams.get("productQuantity");
   const productImg = searchParams.get("productImg");
   const productPrice = searchParams.get("productPrice");
-  const [fieldValue, setFieldValue] = useState("");
+  const [country, setCountry] = useState("");
+  const [crediteCardValue, setCrediteCardValue] = useState({
+    cardNumber: "",
+    expairdate: "",
+    secureCode: "",
+    cardName: "",
+  });
+  const [fieldValue, setFieldValue] = useState({
+    emailOrNumber: "",
+    country: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment: "",
+    city: "",
+    postalCode: "",
+    shipping: "120",
+  });
+  const handleInputValue = (e) => {
+    const { name, value } = e.target;
+    setFieldValue((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+  const handleCreaditeCardInputValue = (e) => {
+    const { name, value } = e.target;
+    setCrediteCardValue((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+  const handleSelect = (e) => {
+    const { value } = e.target;
+    setCountry(value);
+  };
+  console.log("country", country);
   const options = [
     { value: "Bangladesh", label: "Bangladesh" },
     { value: "India", label: "india" },
@@ -49,7 +85,7 @@ const PayDetails = () => {
     );
   };
   const totalPrice = 120 + 500 + productPrice;
-
+  console.log("field ", fieldValue);
   return (
     <section className="container-body ">
       <div className="row">
@@ -68,6 +104,9 @@ const PayDetails = () => {
               <div>
                 <CommonInput
                   required
+                  onChange={handleInputValue}
+                  name={"emailOrNumber"}
+                  value={fieldValue.emailOrNumber}
                   sideText={"Email "}
                   style={inputStyle}
                   type="text"
@@ -90,6 +129,7 @@ const PayDetails = () => {
                 <SimpleSelect
                   options={options}
                   selectTitle={"Select Country"}
+                  onChange={handleSelect}
                 />
               </div>
               <div className="flex">
@@ -98,6 +138,9 @@ const PayDetails = () => {
                     style={inputStyle}
                     type="text"
                     placeholder="First Name (opsonal)"
+                    onChange={handleInputValue}
+                    name={"firstName"}
+                    value={fieldValue.firstName}
                   />
                 </div>
                 <div className="w-2/4 pl-1">
@@ -106,6 +149,9 @@ const PayDetails = () => {
                     required
                     type="text"
                     placeholder="Last Name"
+                    onChange={handleInputValue}
+                    name={"lastName"}
+                    value={fieldValue.lastName}
                   />
                 </div>
               </div>
@@ -115,6 +161,9 @@ const PayDetails = () => {
                   type="text"
                   placeholder="Address"
                   required
+                  onChange={handleInputValue}
+                  name={"address"}
+                  value={fieldValue.address}
                 />
               </div>
 
@@ -123,6 +172,9 @@ const PayDetails = () => {
                   type="text"
                   placeholder="Apartment suite , etc (optional)"
                   style={inputStyle}
+                  onChange={handleInputValue}
+                  name={"apartment"}
+                  value={fieldValue.apartment}
                 />
               </div>
               <div>
@@ -131,14 +183,20 @@ const PayDetails = () => {
                   type="text"
                   placeholder="City"
                   required
+                  onChange={handleInputValue}
+                  name={"city"}
+                  value={fieldValue.city}
                 />
               </div>
               <div>
                 <CommonInput
                   style={inputStyle}
-                  type="text"
+                  type="number"
                   placeholder="Postal Code"
                   required
+                  onChange={handleInputValue}
+                  name={"postalCode"}
+                  value={fieldValue.postalCode}
                 />
               </div>
               <div>
@@ -164,6 +222,9 @@ const PayDetails = () => {
               <form>
                 <CommonInput
                   type="number"
+                  name={"cardNumber"}
+                  onChange={handleCreaditeCardInputValue}
+                  value={crediteCardValue.cardNumber}
                   required
                   placeholder="Card Number"
                   className="px-3 py-2"
@@ -176,6 +237,9 @@ const PayDetails = () => {
                 <div className="flex ">
                   <div className="w-2/4 mr-1">
                     <CommonInput
+                      name="expairdate"
+                      onChange={handleCreaditeCardInputValue}
+                      value={crediteCardValue.expairdate}
                       required
                       type="date"
                       placeholder="Expiration Date (MM/dd)"
@@ -190,6 +254,9 @@ const PayDetails = () => {
                   <div className="w-2/4">
                     <CommonInput
                       required
+                      name="secureCode"
+                      onChange={handleCreaditeCardInputValue}
+                      value={crediteCardValue.secureCode}
                       type="number"
                       placeholder="Secure Code"
                       className="px-3 py-2"
@@ -205,6 +272,9 @@ const PayDetails = () => {
                   <CommonInput
                     required
                     type="text"
+                    name="cardName"
+                    onChange={handleCreaditeCardInputValue}
+                    value={crediteCardValue.cardName}
                     placeholder="Name of Card"
                     className="px-3 py-2"
                     style={{
@@ -246,7 +316,7 @@ const PayDetails = () => {
                   </span>
                 </div>
               </div>
-              <p className=" text-sm"> ${productPrice}.000</p>
+              <p className=" text-sm ml-4"> ${productPrice}.000</p>
             </div>
             {productSellPrice("Subtotal", productPrice)}
             {productSellPrice("Shipping", 1200.0)}
