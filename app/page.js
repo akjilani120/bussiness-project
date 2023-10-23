@@ -17,8 +17,8 @@ import SimpleCard from "@/component/SimpleCard/SimpleCard";
 import CommonInput from "@/component/formComponent/CommonInput";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import "./moreStyleShit/homepage.css";
 import CommonLoading from "@/component/CommonLoading/CommonLoading";
+import "./moreStyleShit/homepage.css";
 export async function getData() {
   const res = await fetch("datas.json");
 
