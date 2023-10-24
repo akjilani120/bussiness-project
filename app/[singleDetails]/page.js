@@ -40,10 +40,10 @@ const AboutPage = ({ params }) => {
     lgLightOpa: false,
     smlLightOpa: false,
   });
-  const screnWidth = window.innerWidth;
-  const screnHieght = window.innerWidth;
-  const [screenWidth, setScreenWidth] = useState(screnWidth);
-  const [screenHeight, setScreenHeight] = useState(screnHieght);
+  // const screnWidth = window.innerWidth;
+  // const screnHieght = window.innerWidth;
+  const [screenWidth, setScreenWidth] = useState();
+  const [screenHeight, setScreenHeight] = useState();
   const handleSmallNav = () => {
     if (window.scrollY >= 170) {
       setSmallNav(true);
