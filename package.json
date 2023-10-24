@@ -1,5 +1,5 @@
 {
-  "name": "fronted-project",
+  "name": "bussiness-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -34,5 +34,9 @@
   },
   "devDependencies": {
     "daisyui": "^3.9.2"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/akjilani120/bussiness-project.git",
+  "author": "akjilani120 <abdulkaderjilani120@gmail.com>",
+  "license": "MIT"
 }
