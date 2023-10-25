@@ -9,6 +9,7 @@ module.exports = {
       "www.freepnglogos.com",
       "e7.pngegg.com",
       "freepngimg.com",
+      "hagerty-media-prod.imgix.net",
     ],
   },
 };
