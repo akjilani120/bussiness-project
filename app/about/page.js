@@ -29,8 +29,8 @@ const AboutPage = () => {
     lgLightOpa: false,
     smlLightOpa: false,
   });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [screenWidth, setScreenWidth] = useState(990);
+  const [screenHeight, setScreenHeight] = useState(855);
   const handleSmallNav = () => {
     if (window.scrollY >= 170) {
       setSmallNav(true);
@@ -119,15 +119,11 @@ const AboutPage = () => {
     }
   };
   useEffect(() => {
-    const handleCheckLenght = () => {
-      // console.log(window.scrollY);
-    };
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
       setScreenHeight(window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleCheckLenght);
     window.addEventListener("scroll", handleSmallNav);
     window.addEventListener("scroll", handleSlideSec);
     window.addEventListener("scroll", handleParshSec);
@@ -260,10 +256,12 @@ const AboutPage = () => {
                 {images.map((img, idx) => (
                   <div key={idx}>
                     {" "}
-                    <img
+                    <Image
                       className={idx === 1 ? "slide-first-img" : ""}
                       src={img}
                       alt="slide image"
+                      width={300}
+                      height={300}
                     />
                   </div>
                 ))}
@@ -285,11 +283,13 @@ const AboutPage = () => {
           style={{ height: "100vh" }}
         >
           <div className=" relative">
-            <img
+            <Image
               className="mx-auto"
               src="https://hagerty-media-prod.imgix.net/2020/11/Bugatti-Chiron-Pur-Sport-show-car-10-scaled.jpg?auto=format%2Ccompress&ixlib=php-3.3.0"
               alt=""
               style={{ height: "100vh", width: "100%" }}
+              height={500}
+              width={500}
             />
             <div
               className={" absolute  text-center text-white"}
