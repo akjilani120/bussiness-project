@@ -1,8 +1,7 @@
 "use client";
 import ShowStillPageName from "@/component/ShowStillPageName/ShowStillPageName";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import datas from "../../../productDatas/datas.json";
-import Image from "next/image";
 import ReactImageMagnify from "react-image-magnify";
 import "../../moreStyleShit/sellDetail.css";
 import StarRatingComponent from "react-star-rating-component";

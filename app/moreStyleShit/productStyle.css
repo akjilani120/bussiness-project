@@ -45,9 +45,12 @@
 .special-style{    
     transition: 1s;
 }
-
+.product-banner-main{
+  left: 40%;
+}
 .product-banner{
-  transform: scale(1.1);
+  height: 350px;
+  width: 100%;
   
 }
 .products-body{
@@ -104,7 +107,7 @@
   width: 100%;
 }
 .car-light-body{
- 
+ background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;

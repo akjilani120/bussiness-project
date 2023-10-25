@@ -40,10 +40,9 @@ const AboutPage = ({ params }) => {
     lgLightOpa: false,
     smlLightOpa: false,
   });
-  // const screnWidth = window.innerWidth;
-  // const screnHieght = window.innerWidth;
-  const [screenWidth, setScreenWidth] = useState();
-  const [screenHeight, setScreenHeight] = useState();
+
+  const [screenWidth, setScreenWidth] = useState(955);
+  const [screenHeight, setScreenHeight] = useState(850);
   const handleSmallNav = () => {
     if (window.scrollY >= 170) {
       setSmallNav(true);
@@ -105,6 +104,7 @@ const AboutPage = ({ params }) => {
       setSingleParshVideo({
         smVideoShow: true,
       });
+      setParsheSec(false);
     }
   };
 
@@ -193,17 +193,21 @@ const AboutPage = ({ params }) => {
                   Overview
                 </p>
                 <div className="  lg:ml-20 md:ml-5 ml-4">
-                  <Link href={`/${data?.model}/${data?.sellDetail}`}>
-                    <SimpleButton
-                      title={"Buy now"}
-                      style={{
-                        padding: "8px 10px",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        borderRadius: "40px",
-                      }}
-                    />
-                  </Link>
+                  {data?.quantity == 0 ? (
+                    " "
+                  ) : (
+                    <Link href={`/${data?.model}/${data?.sellDetail}`}>
+                      <SimpleButton
+                        title={"Buy now"}
+                        style={{
+                          padding: "8px 10px",
+                          fontSize: "14px",
+                          fontWeight: "600",
+                          borderRadius: "40px",
+                        }}
+                      />
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -241,7 +245,7 @@ const AboutPage = ({ params }) => {
             Photography Redefined
           </h1>
         </div>
-        <div className=" absolute bottom-0  lg:left-60 md:left-20  left-6">
+        <div className=" absolute bottom-0  product-banner-main">
           <Image
             className="product-banner"
             src={data?.modelImage}
@@ -387,7 +391,7 @@ const AboutPage = ({ params }) => {
         <div
           className={
             lightSec
-              ? "car-light-body  slide-add-style w-full"
+              ? "car-light-body slide-add-style w-full"
               : "car-light-body "
           }
           style={{
@@ -461,12 +465,33 @@ const AboutPage = ({ params }) => {
                 </h1>
               </div>
               <div className="col-6 col-lg-4">
-                <SimpleProgress ProgressTitle={"Abdul Kader Jilani"} />
+                <SimpleProgress ProgressTitle={"Speed"} />
               </div>
               <div className="col-6 col-lg-2">
                 {" "}
                 <SimpleParcentNumber
-                  percentNumber={60}
+                  percentNumber={70}
+                  percentDetails={"This best rouning car"}
+                />{" "}
+              </div>
+              <div className="col-6 col-lg-4">
+                <SimpleProgress ProgressTitle={"HRS"} />
+              </div>
+              <div className="col-6 col-lg-2">
+                <SimpleParcentNumber
+                  percentNumber={80}
+                  percentDetails={"This best rouning car"}
+                />{" "}
+              </div>
+            </div>
+            <div className="row my-5">
+              <div className="col-6 col-lg-4">
+                <SimpleProgress ProgressTitle={"Range"} />
+              </div>
+              <div className="col-6 col-lg-2">
+                {" "}
+                <SimpleParcentNumber
+                  percentNumber={50}
                   percentDetails={"This best rouning car"}
                 />{" "}
               </div>
@@ -482,7 +507,7 @@ const AboutPage = ({ params }) => {
             </div>
             <div className="row my-5">
               <div className="col-6 col-lg-4">
-                <SimpleProgress ProgressTitle={"Abdul Kader Jilani"} />
+                <SimpleProgress ProgressTitle={"Balance foil"} />
               </div>
               <div className="col-6 col-lg-2">
                 {" "}
@@ -492,32 +517,11 @@ const AboutPage = ({ params }) => {
                 />{" "}
               </div>
               <div className="col-6 col-lg-4">
-                <SimpleProgress ProgressTitle={"Abdul Kader Jilani"} />
+                <SimpleProgress ProgressTitle={"Power"} />
               </div>
               <div className="col-6 col-lg-2">
                 <SimpleParcentNumber
-                  percentNumber={60}
-                  percentDetails={"This best rouning car"}
-                />{" "}
-              </div>
-            </div>
-            <div className="row my-5">
-              <div className="col-6 col-lg-4">
-                <SimpleProgress ProgressTitle={"Abdul Kader Jilani"} />
-              </div>
-              <div className="col-6 col-lg-2">
-                {" "}
-                <SimpleParcentNumber
-                  percentNumber={60}
-                  percentDetails={"This best rouning car"}
-                />{" "}
-              </div>
-              <div className="col-6 col-lg-4">
-                <SimpleProgress ProgressTitle={"Abdul Kader Jilani"} />
-              </div>
-              <div className="col-6 col-lg-2">
-                <SimpleParcentNumber
-                  percentNumber={60}
+                  percentNumber={70}
                   percentDetails={"This best rouning car"}
                 />{" "}
               </div>
